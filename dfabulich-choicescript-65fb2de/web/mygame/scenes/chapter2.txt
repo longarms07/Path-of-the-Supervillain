@@ -1,0 +1,1250 @@
+*comment CHAPTER 2: THE QUEST FOR CASH MONEH
+
+
+
+
+
+*comment STARTUP VARIABLES __________________________________________________________________________________________________________________________________
+
+*set day 1
+
+*temp var1 false
+*comment- watched tv?
+*temp var2 false
+*comment- Opened present?
+*temp var3 false
+*comment- read note?
+*temp bankmoney 100000000
+
+
+*comment INTRO________________________________________________________________________________________________________________________________________________
+(Day 1.)
+*line_break
+You walk into your living room, and see that the TV is already turned on and that there is a
+oddly-shaped object wrapped in snowflake-covered Christmas paper on your coffee table. The TV
+is turned on to Channel 5, the local news network.
+*choice
+	#Open the present
+		*label unwrap
+		You carefully slide your finger under the tape, breaking it without damaging the
+		paper. Slowly unwrapping it, a silver, metal object with blue highlights is revealed.
+		As soon as you see the words "Freeze-Ray" written on the side, you tear apart the paper
+		without abandon and reveal your new prize! 
+		*line_break
+		As you salivate over a shiny new Freeze-Ray, you notice a slightly torn note on the floor
+		in the remains of the wrapping paper. 
+		*temp var2 true
+		*choice
+			#Ignore the note and watch the TV.
+				*goto tv
+			#Read the note
+				"Dear ${name},
+				*line_break
+				I have left you this Freeze-Ray as a present, to aid you in your quest.
+				Remember, step 1 to the world domination plan is earning money. If you
+				don't got any, there's nothing that you can do. As I'm sure you saw on the
+				news, we've got the perfect opportunity to steal a ton of cash right now.
+				How you do this is completely up to you, but remember! We don't have much time!
+				*line_break
+				Yours truly,
+				*line_break
+				Creep E. Mann."
+				*temp var3 true
+				*if not (var1)
+					*page_break
+					Unsure of what he means, you turn your attention to the TV.
+					*line_break
+					*goto tv 
+				*goto routechoice
+
+	#Watch the TV
+		*label tv
+		You start watching TV. A reporter is standing in front of the local bank, talking to someone on her phone.
+		*line_break
+		"I'm not sure exactly why the bank is advertising this, it seems like they're asking to be robbed to me,"
+		she says. "Oh, I've got to go! We're rolling! Alright, I'm standing in front of the Easy Target Bank, were
+		the billionaire-playboy-philantrophist-superhero Fe-Man recently made a large cash deposit of One-Hundred-Million
+		dollars! This is the most money that this branch of the bank has ever recieved, and as such they have decided
+		to brag on local news to rub it in the faces of every other bank. The money will be stored here overnight, before
+		being transferred to a more secure facility by armored truck overnight. There have been some vocal critics- such as
+		myself, against this publicity, in fear that they may be robbed by some aspiring super-villain in need of cash. However,
+		they have declined offers of extra security and have bafflingly fired most of the security staff that they do have."
+		*line_break
+		The program then shifts to commercial, but you have learned everything that you need to. This sounds like a perfect opportunity!
+		*temp var1 true
+		*if not (var2)
+			*page_break
+			You take advantage of your commercial break to open your new present.
+			*line_break
+			*goto unwrap
+		*goto routechoice
+
+
+*comment ROUTECHOICE__________________________________________________________________________________________________________________________________________
+*label routechoice
+*page_break
+Armed with knowledge and your brand new Freeze-Ray, nothing will be able to stop you from getting all the money you need!
+Except maybe the police. Everything will probably be fine though, as long as you are careful. But there's just one thing 
+to figure out before the robbery- are you going to steal the money from the bank, or from the armored transport?
+*line_break
+If you strike today, you'll be able to get the money immediatly and get on with the rest of the plan sooner. It might be more difficult 
+to escape from inside the building, but it's certainly doable. However, it may be easier to strike the armored transport. Stop the veichle,
+get the money, and escape into the city. You'll have to burn an extra day of your time limit, but you can use your time waiting to train and 
+prepare for tomorrow. Which will you choose to do?
+*choice
+	#Rob the bank today
+		*goto Route1
+	#Rob the armored transport tomorrow
+		*goto Route2	
+
+*comment ____________________________________________________________________________________________________________________________________________________
+
+
+
+
+*comment ROUTE1______________________________________________________________________________________________________________________________________________
+*label Route1
+*comment Robbing the Bank
+
+*temp sfrozen false
+*comment if the security guard is frozen or not
+
+Deciding now is the best time for action, you immediatly head over to the bank with your brand new weapon
+in tow. You walk through the front door, and find a semi-crowded lobby. There are about 7 patrons, waiting 
+in line for the one teller on staff. In the corner, standing vaugely near the giant vault-wheel door, is 
+an old and clearly exhausted man. He is practically falling asleep at his post; that should make your job all
+the easier. So... what will you do first?
+*choice
+
+	*if (power = "Invisibilty") #Turn invisible
+		*goto invisible1
+
+	#Use the freeze-ray on the bystanders and security guard
+		*goto freeze1
+
+	#Approach the teller
+		*goto teller1
+
+	*if (power = "Super Strength") #Freeze everyone and open the vault with your super strength
+		*goto freezestrength
+
+
+
+
+
+
+*comment TURN INVISIBLE_________________________________________________________________________________________________________________________________________
+
+*label invisible1
+You hide behind a potted plant to avoid the risk of being noticed, as you turn invisible. After removing as
+many articles of clothing as you can while still keeping your power active (and giving them to the plant to 
+wear,) you become invisible. What will you do now?
+*temp check1 0
+*rand check1 0 100
+*choice
+	#Hide out by the vault and wait for it to open
+		*label invisiblevault
+		*if (check1 <= power_mastery)
+			*comment SUCCESS
+			*label invisiblevault_s
+			You manage to sneak by the vault and camp out at the door, waiting for it to open.
+			It is a true test of patience, for no one comes to open it for over three hours. 
+			Luckily, just as you are about to give up hope, one of the tellers comes over and 
+			unlocks the door. You manage to run in while they are doing so.
+			*line_break
+			*if (power_mastery <= 90)
+				*set power_mastery +10
+				(Power Mastery +10!)
+			*page_break
+			In the vault, there is a singular suitcase sitting on a table, lid propped open so 
+			that you can see more hundred-dollar bills than you had ever dreamed of laying eyes 
+			upon before. The teller walks over to it, not noticing you, and places a few more piles 
+			of paper cash into the case. She closes it, and begins walking to the exit. What will you do?
+			*temp bankmoney 100001089
+			*choice
+				#Grab the money and run
+					You grab the suitcase and run out of the vault. The teller shrieks as the suitcase
+					begins dashing out the door on its own. As you jump out of the vault, you notice her 
+					gaining on you...
+					*choice
+						#Lock her in the vault
+							*if (sfrozen)
+								You close the vault door on the teller, and lock it. Who knows when
+								she will be able to escape, but she can't stop you now! You run out the 
+								of the bank, and by the time any of the bystanders realize what is going on 
+								it is already too late!
+								*if (morality <= 90)
+									morality +10
+									*line_break
+									(+10 Evil!)
+									*goto route1success
+							
+							*else
+								As you begin shutting the door on the teller, the security guard suddenly 
+								grabs you from behind! 
+								*line_break
+								*rand check57 0 100
+								*if (check57 <= strength)
+									He gives you a tough fight, but you are able to pull his arms off 
+									of you and throw him into the vault too. You lock the two of them in, and 
+									make your escape!
+									*if (morality <= 90)
+										morality +10
+										*line_break
+										(+10 Evil!)
+									*goto route1success
+								*else
+									Unable to break free of his grip, he drags you to the ground and stomps on your 
+									back. As you scream in pain, the last thing you can here is a cackling of electricity
+									from his tazer and everything fades to black.
+									*page_break
+									When you come to, you are sitting, handcuffed, in the back of a police car. You have failed.
+									*line_break
+									*ending
+								
+						#Keep running
+							You dash out of the vault with the suitcase, teller trailing behind.
+							*if not(sfrozen)
+								The security guard joins the chase as soon as he notices you dash by, 
+								but neither he nor the teller can catch up!
+							You manage to run out of the bank and lose them in a nearby alley. The money is now yours!
+							*goto route1success
+
+
+				#Freeze the teller first 
+					You shoot the teller, and she screams as a giant block of ice appears around her! 
+					*label invisiblefrozenteller
+					*if not (sfrozen)
+						The security guard runs over to investigate as soon as the shrieks start, 
+						but it is too late for him! You fire the beam, and soon you have a second 
+						human popsicle for your collection!
+					*line_break
+					What will you do now?
+					*choice
+						#Lock the two frozen bodies in the vault
+							With some effort you manage to get both icicles into the vault, and then shut 
+							the door with them in it. If they are lucky, someone will realize where they 
+							are before they thaw out...
+							*if (morality <= 90)
+								morality +10
+								*line_break
+								(+10 Evil!)
+							*page_break
+							*goto invisiblerun
+
+						#Take the money and run.
+							*label invisiblerun
+							Grabbing the suitcase with the money, you manage to run out the of the bank. 
+							By the time any of the bystanders realize what is going on 
+							it is already too late for them to stop you!
+							*goto route1success
+		*else
+			*comment FAILURE		
+			You manage to sneak by the vault, and you park yourself outside the door for a while.
+			When a teller finally does come to open it, they immediatly stop in front of you. 
+			*line_break
+			"Why is there a floating set of clothes in front of the vault?" She asks, reaching for 
+			a big red button on her pager. You must do something, quick!
+			*choice
+				#Attack her and force her to open the vault
+					You point grab her hand before she can touch the pager, and shove the freeze-ray into her chest.
+					"Open the door and don't scream if you want to live," you say. "One false move and I won't hesitate 
+					to pull the trigger!" Her eyes widden in terror, and she promptly opens the vault door for you as 
+					you continue to hold her at ray-point.
+					*label invisibleattack
+					*line_break
+					"Please don't kill me," she says. 
+					*choice
+						#Freeze her and lock her in the vault
+							"Ok," you say, before you freeze her. She shreeks in terror as blue ice forms at her stomache 
+							and envolopes her entire body.
+							*goto invisiblefrozenteller
+						#Let her go
+							"Run away now," you say. She nods, and you watch her run out of the bank. You enter the vault, 
+							and see a suitcase full of money lying on the floor. You pick it up, and begin your escape.
+							*if not (sfrozen)
+								The vault door begins closing with you inside, and you don't manage to make it in time to 
+								prevent it from closing! The security guard must have realized what was going on and locked you in!
+								*page_break
+								The vault door opens again, hours later, with a squad of policemen waiting on the other side.
+								Out of options, you are promptly arrested. You have failed.
+								*ending
+				
+				#Answer her sarcastically
+					"Because it wants to make a withdrawal," you say. "After all, isn't that what you do at banks?"
+					*line_break
+					The teller stares for a moment, before bursting into laughter and falling to her knees. Despite 
+					how unfunny the joke may have sounded it seems to have completely incapacitated her. You take advantage 
+					of this chance, pressing the freeze-ray to the back of her head.
+					*line_break
+					*if (cunning <= 90)
+						(+10 Cunning!)
+						*set cunning +10
+					*page_break
+					"Open the door and don't scream if you want to live," you say. She immediatly stops laughing, and complies.
+					She opens the vault door for you.
+					*goto invisibleattack
+
+				#Run away
+					You run out of the bank, with the teller chasing you. You manage to lose her outside 
+					the bank, but you have no more money than you did before...
+					*goto route1fail
+
+
+	#Pick pocket everyone at the bank for some extra cash
+		*if (check1 <= power_mastery)
+			*comment SUCCESS
+			You manage to evade notice, as you go to each and every person in the bank and swipe all the 
+			cash out of their wallets. Not even the dozing security guard manages to escape the serial robbery! 
+			*line_break
+			You get $1087!
+			*set money +1087
+			*if (power_mastery <= 90)
+				*set power_mastery +10
+				(Power Mastery +10!)
+			*line_break
+			Now what will you do?
+			*rand check1 0 100
+			*choice
+				#Hide out by the vault and wait for it to open
+					*goto invisiblevault
+				#Dispose of security before anyone can notice me
+					*goto invisibleguard
+			
+		*else
+			*comment FAILURE
+			As you reach your hand into someone's pocket, you accidentally grab onto something 
+			that isn't a wallet...
+			*line_break
+			The inconveniently placed woopie-cushion emmits the most terrfying flatulence noise 
+			you have ever heard, as everyone turns perks up and immediatly turns to you. The man 
+			you are pickpocketing screams and runs away as he lays eyes upon the disembodied clothes 
+			next to him, and the security guard jumps up, unsure of what to do. What will you do?
+			*choice
+				#Freeze everybody
+					*goto freeze1
+			
+				#Flee the scene
+					You run away in embarrassment, with the security guard trailing you. 
+					You manage to lose her outside the bank, but you have no more money 
+					than you did before...
+					*goto route1fail
+					
+
+
+	#Dispose of security before anyone can notice me
+		*label invisibleguard
+		*if (check1 <= power_mastery)
+			*comment SUCCESS
+			You sneak by the security guard, turn the freeze-ray on to "silent" and "freeze for 24 hours."
+			You zap him, and catch the guard-cicle as before it can fall to the floor. You drag him off behind 
+			potted plant, where no one will be able to notice him. Now, safe without a security guard, it is just
+			a waiting game until someone opens the vault for you.
+			*temp sfrozen true
+			*page_break
+			*goto invisiblevault_s
+		*else
+			*comment FAILURE
+			As you prepare to fire the gun, the security guard turns around and finds himself staring down the 
+			barrel of your freeze ray. He shouts "Intruder!" As you shoot and freeze him point blank. One of the 
+			tellers starts running towards you. What will you do?
+			*temp sfreeze true
+			*choice
+				#Run away
+					You run out of the bank, with the teller chasing you. You manage to lose her outside 
+					the bank, but you have no more money than you did before...
+					*goto route1fail				
+				#Force the teller to open the vault
+					*goto holdtellerhostage
+			
+*comment FREEZE CROWD_________________________________________________________________________________________________________________________________________________
+
+*label freeze1
+*temp sfreeze true
+You pull out the freeze-ray, and open fire on the crowd on the bank. The room temperature drops down to 32 degrees Farenheit as they become icicles, 
+one by one. By the time the security guard realizes what is going on, ice is quickly engulfing his body and turning him into an ice sculpture. The 
+teller looks upon your work in horror, and starts reaching under the bank desk. She freezes in place once she realized the barrel of the freeze-ray is 
+pointed directly at her.
+*line_break
+*if (morality <= 95)
+	*set morality +5
+	(+5 Evil!)
+*page_break
+"Back away," you say, "and put your hands up where I can see them."
+*line_break
+She complies, clearly scared out of her mind.
+*goto holdtellerhostage
+
+
+
+
+*comment APPROACH TELLER__________________________________________________________________________________________________________________________________
+*label teller1
+You cut past the line, as the other guests shout their objections. They gather around as you turn to the teller, fencing you in as they protest.
+You look over at the security guard, as he seems to take interest in the situation.
+*line_break
+"Can I... help you?" the teller asks. 
+*choice
+	#Attack the teller and hold her hostage
+		*label holdtellerhostage
+		You get behind the teller and jab the freeze-ray into her back.
+		*line_break
+		"If you want to get out of here without freezer burn, you are going to do exactly as I say," you tell her. "Can you open the vault?"
+		*line_break
+		Too scared to speak, she simply nods.
+		*line_break
+		"Good," you say. "Open it."
+		*page_break
+		You walk her over to the vault, and she inputs the combination and opens the heavy door.  Inside the vault, you can see an open suitcase 
+		full of hundreds of hundred dollar bills.
+		*line_break
+		"It's open," she says. "Now let me go!"
+		*line_break
+		Do you?
+		*choice
+			#Yes, I let her go
+				"Get out of here," you tell her. Wasting no time, she turns around and starts running. You head into the vault and start 
+				counting the money in the suitcase-
+				*line_break
+				-When you hear a loud click behind you. Turning around, you see the vault door sealed shut! The teller locked you in!
+				*page_break
+				*if (power = "Super Strength")
+					There's only one option now: Pulling an expired can of spinach out of your pocket, you peel off the lid and eat it 
+					in one gulp. You feel your muscles begin expanding... as you feel your stomache start rebelling. You manage to hold 
+					it's contents in, however, and grabbing one side of the vault door you are able to peel it off as if it were the lid of 
+					the can. You see the teller on the phone (presumably calling the cops), and she suddenly turns and screams when she sees you.
+					She faints to the ground, dropping and shattering the cell phone in the process. Wasting no time, you grab the money and run. 
+					That was close!
+					*goto route1success
+				*else
+					The vault door finally reopens, hours later, with a squad of policemen waiting on the other side.
+					Out of options, you are promptly arrested. You have failed.
+					*ending
+			
+			#No, I freeze her
+				Smiling, you pull the trigger. She lets out a gasp as she turns blue and is covered by the ice. 
+				*line_break
+				Now what?
+				*choice
+					#Leave her and get the money
+						You turn your attention to the prize, stepping into the vault and heading towards the suitcase. 
+						You count the money, and seal it up. You exit the building, rolling the suitcase behind you with your 
+						ill-gotten gains. Score!
+						*goto route1success
+			
+					#Get the money, and lock her in the vault
+						You head into the vault, dragging the frozen teller behind. After you check the suitcase to make sure
+						all the money is inside, you exit the vault and seal the door shut with her still inside. Someone will probably 
+						save her by the time she thaws out, if shes lucky. With no one else to stop you, you exit the building as a rich man!
+						*line_break
+						*if (morality <= 90)
+							*set morality +10
+							(+10 Evil!)
+						*goto route1success
+		
+
+
+
+
+	#Threaten the crowd and demand they hand over their money
+		*temp s-freeze true
+		You pull out your freeze-ray and zap the security guard. The teller and the guests watch in horror as he becomes a block of ice. You 
+		see one of the guests about to run, but before they can you point the gun at them.
+		*line_break
+		"No running!" You shout. "If you guys know what is good for you, you will hand over all your money!"
+		*page_break
+		Scared, the guests comply and hand over their wallets.
+		*set money 1609
+		*line_break
+		Obtained $1609! 
+		if (cunning <= 90)
+			*set cunning +10
+			(+10 cunning!)
+		*line_break
+		What will you do with the crowd now?
+		*choice
+			#Let them go and force the teller to open the vault
+				"Thanks for the money," you say. "Now scram!"
+				*line_break
+				Not needing to be told twice, the bank guests immediatly run to the exit. You notice the teller
+				preparing to make a break for it.
+				*line_break
+				"Not you," you say. "You're coming with me."
+				*page_break
+				*goto holdtellerhostage
+			
+			#Freeze them and take the teller hostage
+				*goto freeze1	
+		
+			*if (power = "Super Strength") #Freeze everyone and open the vault with your super strength
+				*goto freezestrength
+
+	#Freeze the security guard and crowd
+		*goto freeze1
+
+	*if (power = "Hypnosis") #Hypnotize the teller
+		*goto hypno
+
+
+*comment HYPNOSIS______________________________________________________________________________________________________________________________________________________
+*label hypno
+*temp check2 0
+*rand check2 0 100
+*page_break
+
+You begin doing the chicken dance in front of the teller and the crowd. Music spontaneously fills the air around you, and fuels your need to boogie!
+The teller stares at you, opens her mouth as if to say something, and then closes it. 
+The people in the crowd stare in utter confusion, almost transfixed as you flap you arms like a bird.
+*if (check2 <= power_mastery)
+	*comment SUCCESS
+	The security guard approaches, suspicious; but before he can do anything to stop you, you complete the dance. As you make you make the final
+	movement, everyone- bystanders, guard, and teller, suddenly stop in place and stare at you blankly. They have been entranced!
+	*line_break
+	*if (power_mastery <= 90)
+		*set power_mastery +10
+		(+10 Power Mastery!)
+		*line_break
+	Now that everyone is under you power, what will you command them to do?
+	*choice
+		#Order the teller to open the vault. Let's get this over with quickly
+			*label hypnovault
+			"You," you say as you point to the teller. "Do you know how to open the vault?"
+			*line_break
+			"Yes master," she says. "I mean, yes, I do know how to open the vault, master. Sir."
+			*line_break
+			"Then open it," you say.
+			*line_break
+			She leads you to the vault, puts in the combination, and opens the massive door for you. You step inside. The vault's interior is 
+			sparce; the only thing there is a rolling suitcase. You unzip the suitcase, and find thousands of hundred dollar bills inside. Counting 
+			it, you find all $100,000,000 inside! What an easy heist!
+			*page_break
+			You exit the vault, and are suddenly swarmed by your new vassals. They stare at you expectantly.
+			*line_break
+			"What will you have us do now, master?" the security guard asks.
+			*choice
+				#Command them to get in the vault and lock them in
+					"Get in the vault," you order.
+					*line_break
+					"Yes, master," they say in unison and they all step inside. You immediatly slam the vault door on them and lock it. 
+					Man, those guys got creepy!
+					*line_break
+					*if (morality <= 90)
+						*set morality +10
+						(+10 Evil!)
+					*page_break
+						With no one to stop you, you leisurely walk out of the bank with your money and head back to your evil lair.
+						*goto route1success				
+
+				#Take them to your lair, they will make good henchmen.
+					"Come with me," you tell them. "From now on, you are my evil henchmen!"
+					*line_break
+					"Yes master, we are evil henchmen!" they say. Each one attempts a maniacal laugh. While they aren't... great, 
+					you appreciate the effort.
+					*line_break
+					*if (support <= 90)
+						*set support +10
+						(+10 Followers!)
+					*page_break
+					With no one to stop you, you leisurely walk out of the bank with your money and new henchmen and head back to your evil lair.
+					*goto route1success
+
+
+		#Command everyone to give you all their money, then open the vault.
+			*temp var cashmoney
+			*rand cashmoney 0 10000
+			"Give me your wallets!" You shout.
+			*line_break
+			"As you command, master," your new servants say in unison. Almost creepily, they reach into their pockets and hand you their wallets in 
+			sync. You open them and pocket all the cash. 
+			*line_break
+			Aquired ${cashmoney} dollars!
+			*page_break
+			*goto hypnovault
+
+
+*else
+	*comment FAILURE
+	But the security guard is not amused. Just as you are about to finish, he grabs you out of the crowd (and out of the dance.)
+	*line_break
+	"Go home buddy, you're drunk," he says, and starts dragging you to the door. 
+	*choice
+		#I can't let him stop me! I freeze him!
+			*temp sfreeze true
+			As soon as he grabs you, you pull out the freeze-ray and freeze the guard solid!
+			*line_break
+			A lady shrieks, and the crowd runs away as one shouts to call the cops. You can't have that, so you turn each and 
+			every one of them into an icicle. The teller gets up and starts to run, so you chase after her.
+			*page_break
+			*goto holdtellerhostage
+
+		#Welp. Time to go home in embarrassment.
+			The security guard throws you out of the bank, and you walk home in shame.
+			*goto route1fail
+
+
+
+
+*comment FREEZE EVERYONE USE SUPER STRENGTH____________________________________________________________________________________________________________________________
+*label freezestrength
+*comment FREEZING EVERYONE INCLUDING TELLER AND USING SUPERSTRENGth TO OPEN THE VAULT
+
+*temp check3 0
+*rand check3 0 100
+
+Before anyone can notice your presence,you pull out the freeze-ray and open fire. Within a matter of seconds the teller and the security guard are transformed into giant 
+icicles. The random bystanders start freaking out, but before anyone can run you shoot another round and turn them all into popcicles. Now there are no witnesses, and no one 
+who can interfere with your evil plan!
+*page_break
+Now, to open the vault. You pull a can of expired spincach out of your pocket, rip off the lid, and down all of the browned leaves in one gulp. You feel a srange feeling welling within you...
+*line_break
+*if (check3 <= power_mastery)
+	*comment SUCCESS	
+	A surge of energy emits from your now-queasy stomache, tripling the size of all your muscles and making you strong enough to bench-press planets! The vault might as well be a piece of 
+	paper to you now, and with one finger you are able to grab the massive titanium vault door and rip it off of its hinges!
+	*line_break
+	*if (power_mastery <= 90)
+		*set power_mastery +10
+		(+10 Power Mastery!)
+	*page_break
+	Stepping into the vault, you see a single black rolling suitcase sitting on the ground. Inside, there are more hundred dollar bills than you ever imagined were in circulation! All of the money 
+	you seek is in there. You zip it up, and wheel it out of the bank. After all, there is nothing the blocks of ice can do to stop you! 
+	*goto route1success
+
+
+
+*else
+	*comment FAILURE
+	...and promptly fall over and start vomiting! Your stomache was not strong enough to retain the expired spinach. Feeling sick, you stand up... and realize that you are 
+	screwed. The only person who can possibly open the vault, the teller, is now a iceberg and likely will be for the rest of the week. You have royally screwed yourself over. 
+	You return home in shame.
+	*got route1fail
+
+
+
+*comment ROUTE 1 SUCCESSFUL_____________________________________________________________________________________________________________________________________________
+*label route1success
+*page_break
+*set money +bankmoney
+
+Today was a very successful bank robbery! You obtained $${money}! This should be sufficient funding for your world domination efforts. Just make sure that you spend it carefully...
+*finish
+
+
+
+*comment ROUTE 1 FAILURE_____________________________________________________________________________________________________________________________________________
+*label route1fail
+*page_break
+*comment GIVE THE CHANCE TO DO THE ROUTE 2 ROBBERY WITHOUT THE STAT BOOSTS FROM DAY 1
+*comment USUALLY FROM RUNNING AWAY
+Well, that could have gone better. With your measly budget of $${money}, there is no possible way that you can conquer the world in just one week. You are either gonna 
+have to give up now, or try again tomorrow. With how cocky this bank is, they probably won't increase security for the armored transport. If you try hard enough, you might 
+be able to salvage this...
+*choice
+	#Give up now. This is too much work.
+		Creep E. Mann will probably be disappointed, but this whole villain thing just isn't panning out. You gave it a shot, but its time for an early retirement.
+		*ending
+	#Try again tomorrow, rob the transport!
+		There's no sense in giving up without trying one last time. As long as the fires of villainy burn bright within you, you will find a way to take over the 
+		world! You know where the money is gonna be tomorrow, just have to go for it now. 
+		*page_break
+		You spend a few the remaining hours of the day researching the bank, their transport service,
+		and the transport route that the bank has conveniently shared with the rest of the world on Twitter.
+		Once you are confident that you know enough to pull the heist off, you go to bed. Got to rest up for the big day tomorrow!
+		*page_break
+		*goto day2
+
+
+*comment ______________________________________________________________________________________________________________________________________________________________
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*comment ROUTE 2 _______________________________________________________________________________________________________________________________________________________
+*label Route2
+*comment Robbing the Transport
+
+*comment DAY 1__________________________________________________________________________________________________________________________________________________________
+*temp bankmoney 100051397
+After giving it much thought, you decide that it would be best to wait a day and steal the money 
+while it is being transported. You spend a few hours researching the bank, their transport service,
+and the transport route that the bank has conveniently shared with the rest of the world on Twitter.
+Once you are confident that you know enough to pull the heist off, you have time to spend the rest 
+of your day doing something else. What will you do?
+*choice
+	#Practice using my superpower
+		You spend the day practicing, doing your best to get a handle on your powers. It takes 
+		a while, but you feel like you've improved a lot.
+		*line_break
+		(+10 Power Mastery!)
+		*set power_mastery +10
+		*goto day2
+
+	#Work out at the gym
+		You head over to the gym, spending a few hours alternating between lifting weights and
+		running on the treadmill. By the time you finish, you've caught up on all of your TV shows
+		and feel like your muscles are much bigger than they were before.
+		*line_break
+		(+10 Strength!)
+		*set strength +10
+		*goto day2
+
+	#Spend the night online
+		You spend your time posting online, reading through your social media accounts and getting 
+		into arguments with strangers over the most minor of issues. However, you do such a good job 
+		of arguing your points that you gain more loyal fans and supporters. 
+		*line_break
+		(+10 Support!)
+		*set support +10
+		*goto day2
+
+	#Play video games till morning
+		You boot up your favorite game, and before you know it the day is gone. But you managed to finally 
+		complete the game after finding the secret boss, and you're quite proud of your virtual accomplishments!
+		*line_break
+		(+10 Cunning!)
+		*set cunning +10
+		*goto day2
+
+	#Practice my evil laugh in the mirror
+		If you're going to be a supervillain, you need a trademark laugh! You test a few in the mirror, but can't 
+		quite seem to find your groove. After about 11 hours of laughing, you finally manage to settle upon the perfect laugh.
+		*line_break
+		(+5 Evil!)
+		*set evil +5
+		*goto day2
+
+*comment DAY2________________________________________________________________________________________________________________________________________________________________
+*label day2
+*set day 2
+*page_break
+(Day 2.)
+*line_break
+After a while, the next day finally comes. It is now time to attack the armored transport! Making sure to bring the 
+freeze-ray along, you head out of your apartment and head out to...
+*choice
+	*comment BEFORE TRANSPORT LEAVES_________________________________________________________________________________________________________________________________
+
+	#The bank, to attack the transport while they are loading it.
+		*if (cunning <= 95)
+			*set cunning +5
+			(+5 Cunning!)
+			*line_break
+		You arrive at the bank, and huddle next to the wall. Peaking your head around the corner, you see a silver armored transport car coming to a stop 
+		at the bank's loading doors. The loading door opens, and a security guard walks out dragging a single suitcase behind her.
+		*line_break
+		"Is that the all of it?" the driver asks.
+		*line_break
+		"Yup, all the money is in here," the guard replied. "There's a lot more room in this case than it looks like. Got it for a vacation I took a while back, 
+		and practically fit my whole house inside!"	
+		*line_break
+		"Really?" the driver says, staring at the case with wide-eyes. "That sounds exactly like what I need! Where did you get it?"
+		*line_break
+		...It looks like their conversation is going to take a while. This is probably your best chance to make a move. What will you do?
+		*temp check4 0
+		*rand check4 0 100
+		*choice
+			#Run and grab the suitcase while they are distracted
+				*if (check4 <= strength)
+					*if (strength <= 90)
+						*set strength +10
+						(+10 Strength!)
+						*line_break
+					You run and grab the suitcase. The security guard attempts to resist, but you manage to wrench it from her grasp and take off! 
+					The security guard runs after you in pursuit, and the driver jumps into the transport truck and starts it... All this work will be 
+					for naught if you don't escape!
+					*choice
+						#Lose them in another alley too small for the truck
+							*label loseinalley
+							No one knows how, but you managed to do it. You outran that truck. The driver started the transport and started driving 
+							after you, but you were faster. Heck, he pushed that thing as fast as it could go, but you ran faster! You both lost the 
+							guard within seconds, and before you could even make it to the tiny alley you had planned on losing him in, the transport truck 
+							stalled to a halt. The driver was pushing it so hard, trying to keep up, that the engine broke! Needless to say, you made it back home with the cash.
+							*goto route2success
+
+				
+						#Freeze them behind you
+							*label losebyfreeze
+							Neutralizing the bigger threat first, you pull out the freeze-ray and fire at the truck. A huge wall of ice appears around it, trapping it 
+							in place. The security guard continues pursuing you without hesitation, so you shoot a cold blast at her and turn her into a 
+							smaller block of ice. The driver, who was exiting the transport as you froze the guard, immediatly turns in the opposite 
+							direction and runs away. Now that they're out of the picture, there's nothing to stop you from returning home with your cash!
+							*if (cunning <= 95)
+								*set cunning +5
+								*line_break
+								(+5 Cunning!)
+							*goto route2success
+				
+				*else
+					You run across to the two and grab the suitcase. But man, that security guard is strong! The second you start 
+					tugging the bag away, she pulls it back, punches you, and sends you flying into the wall!
+					*set cunning -5
+					*line_break
+					(-5 Cunning genius.)
+					*rand check4 0 100
+					*page_break
+					The security guard hands the suitcase to the driver, who quickly throws it into the back of the armored transport. 
+					The guard crosses her arms. 
+					*line_break
+					"Did you seriously just try to grab the money and run?" she asks. You watch as the driver prepares to lock the transport.
+					*choice
+						#Try again to run and grab the suitcase
+							*if (check4 <= strength)
+								*if (strength <= 90)
+									*set strength +10
+									(+10 Strength!)
+									*line_break	
+								You lunge forward. The guard tried to grapple you, but you manage to slip through her grasp. The driver 
+								attempts to slam the door shut, but you manage to grab the suitcase and start running, with the guard trailing 
+								behind in pursuit! And, as if things couldn't get worse, the driver jumps in the transport truck and starts it...
+								You need to do something fast!
+								*choice
+									#Lose them in another alley too small for the truck
+										*goto loseinalley
+				
+									#Freeze them behind you
+										*goto losebyfreeze
+							*else
+								You lunge forward, and immediatly get tackled! The security guard puts all of her strength into the attack, and you get 
+								thrown backwards. Your head slams against the wall, and everything goes black...
+								*page_break
+								You come to when everything becomes flashes of red and blue. The police have arrived, and you are already in handcuffs. 
+								They read you your rights, and cart you off to jail after your joke of an attempted robbery. You have failed.
+								*ending
+	
+						#Try to freeze the guard and driver
+							You pull out your freeze-ray, and fire at the guard in front of you. At point blank range, she is unable to react in time before 
+							she is frozen solid. The driver grabs the transport door to shut it before you can get to the money, but he only ends up helping you. 
+							When your freeze-ray hits him as he grabs the door, the ice engulfs his body and traps the door in the open position! Now, no one 
+							could stop you from getting that suitcase if they tried! You grab it, and run back to your lair before anyone can stop you.
+							*goto route2success
+							
+						*if (power = "Super Strength") #Overpower the guard and grab the money
+							*if (check4 <= power_mastery)
+								You grab a bag of brown spinach out of your pocket and quickly eat it. The guard recoils in disgust once the smell reaches her. 
+								But you manage not too. Power surges through you, and you immediatly grab the guard and shove her to the side. You slowly walk to the guard, 
+								who tosses the suitcase in the transport and locks it. He runs to the front of the truck and starts fumbling with his keys, trying to get in. 
+								The guard tries to tackle you from behind, but with your current strength she cannot even slow you down. You reach the back of the 
+								reinforced armored truck and rip it off. The driver immediatly screams and runs when he sees this, and the guard lets go of you and starts sneaking 
+								away. With both of them taken care of, you grab the suitcase and wheel it back to your lair.
+								*if (power_mastery <= 90)
+									*set power_mastery +10
+									*line_break
+									(+10 Power Mastery!)
+								*goto route2success
+
+							*else
+								You grab a bag of brown spinach out of your pocket and quickly eat it. The guard recoils in disgust once the smell reaches her. 
+								And your stomache does too. You immediatly throw up, getting vomit all over the ground and your pants.
+								*page_break
+								You and the guard stare at each other awkwardly.
+								*line_break
+								"I'm just gonna go now," you say.
+								*line_break
+								"That is probably for the best," she responds. You pick yourself up, and walk home in shame.
+								*goto route2fail
+			
+			#Freeze them both and grab the suitcase
+				From your hiding spot, you point the freeze-ray around the corner. It is a bit awkward to aim in your attempt to stay hidden, and it shows. 
+				When the first freeze beam fires, it misses the conversating two and hits the armored transport, eveloping it in ice and essentially trapping 
+				it in place! As the guard prepares to draw her weapon and the driver starts freaking out, you manage to somersault from behind the building and 
+				nail them both, leaving ice scultpures standing in their place! 
+				*line_break
+				After that, it is a simple matter of grabbing the suitcase and wheeling it back to your apartment. Easiest heist ever.
+				*if (cunning <= 90)
+					*set cunning +10
+					*line_break
+					(+10 Cunning!)
+				*goto route2success
+
+
+			#Walk up to them and join the conversation
+				"I'm really curious about that too," you say as you walk towards them. Both turn to face you. "It sounds like an extraordinarily good suit-"
+				*line_break
+				You are immediatly cut off by the sound of a gunshot and a sudden pain in your chest. You put your hand to it, and look down. There is a weird 
+				red liquid oozing over your hand.
+				*line_break
+				"What the flippidy split!" the driver shouts, as your vision fades to black. "You just killed him!"
+				*line_break
+				"He looked like a theif," you hear the security guard calmly says.	
+				*line_break
+				And then... nothing.
+				*label dead
+				*page_break
+				Well, you're dead now. Sounds like you failed your mission pretty bad. But don't worry. Since you are a supervillain, someone will probably bring you 
+				back to life next week. That's usually how it works. Too bad it will be too late to take over the world by then, though...
+				*ending 
+
+			*if (power = "Invisibilty") #Turn invisible and grab the suitcase
+				You turn invisible, and remove as many articles of clothing as you can. Hoping that the guard and driver don't notice your 
+				floating socks, you tiptoe over to them as they continue to talk. The guard keeps her hand firm on the suitcase handle, 
+				making it impossible to swipe... until she removes it to demonstrate the size of a breadbox to the confused driver! Taking 
+				advantage of this chance, you grab the suitcase handle and slowly wheel it away...
+				*page_break
+
+				*if (check4 <= power_mastery)
+					Luckily, they are so absorbed in their conversation that they don't even notice the money walk away! These two aren't gonna 
+					keep their jobs for much longer. As soon as you get the suitcase around the building's corner, you dash off to your evil lair. 
+					That was a pretty easy heist!
+					*if (power_mastery <= 90)
+						*set power_mastery +10
+						(+10 Power Mastery!)
+						*line_break
+					*goto route2success
+				
+				*else
+					*comment FAILURE
+					"Umm... why is a pair of flying pair of socks dragging the money away?" the driver asks, pointing at your sock-covered hands. You immediatly 
+					become visible once again, and the security guard rushes over and rips the suitcase away from you.
+					*line_break
+					"You're not getting away with this!" she shouts at you, reaching for her firearm. If you are to get away with the money, you've got to do something 
+					fast!
+					*temp check99 0
+					*rand check99 0 100
+					*choice
+						#Pull a Greedo and shoot first!
+							She's quick to the draw, but you're quicker! Pulling out your freeze-ray, you fire a shot at her! It manages to hit her in the head, covering 
+							her in ice as she attempts to raise the gun. The driver barely has time to react before you quickly turn and freeze him as well! 
+							*page_break
+							Now that the two of them are icicles, there is no one to stop you from taking the suitcase. You casually grab the handle, and wheel it back to your apartment. 
+							You feel as if you've forgotten something, but can't quite put your finger on it... 
+							*line_break
+							Hours later, the police are baffled by the mysterious pile of clothes near the bank robbery crime scene...
+							*goto route1success
+
+
+						#Shes got a gun, run away!
+							You yelp, and run away like a coward. She fires a few warning shots at you, and you are certain that she's going to kill you! 
+							But thankfully, there's some good and bad news. The good news is that they all missed. You're gonna live to see another day!
+							The bad news is that you didn't get any of the money, so it is probably not gonna be a good day... uh oh...
+							*goto route2fail
+
+						#Tackle her!
+							*if (check99 <= strength)
+								You lunge forward and tackle the guard. You manage to slam her into the ground! Before she can get up, you grab the suitcase and 
+								start running.
+								*if (strength <= 90)
+									*set strength +10
+									*line_break
+									(+10 Strength!)
+								*page_break
+								Unfortunately, it doesn't take her long to get back up and start chasing you. Perhaps even more unfortunately, the driver jumps into 
+								his truck and starts it- he's gonna try to charge you! You gotta do something now!
+								*choice
+									#Lose them in another alley too small for the truck
+										*goto loseinalley
+				
+									#Freeze them behind you
+										*goto losebyfreeze
+
+							*else
+								You lunge forward and shove your full weight into the security guard! ...but shes stronger that you. With a seemingly gentle shove, she tosses 
+								you back into the wall and pulls out her firearm.
+								*line_break
+								"Nice try, budddy," she says, "but not today. You're gonna sit right there until the cops arrive, got it?"
+								*line_break
+								Well, what other choice do you have?
+								*choice
+									#Sit there until the cops arrive
+										You do exactly as she says, and sit in place until the cops arrive. It takes about half an hour, after which they promptly handcuff you 
+										and shove you into the back of a police cruiser to drag off to jail. You have failed.
+										*ending
+						
+									*if (power_mastery >= 25) #Turn invisible and quickly freeze her
+										You smile, and turn invisible again. You catch her off-guard, and she hesitates for a moment before discharging her gun. Luckily, 
+										her pause gave you all the time you needed to move out of the way! You quickly fire a freeze-bolt at her and the driver, turning them 
+										both into popsicles, before grabbing the money and running. Success!
+										*line_break
+										*if (power_mastery <= 90)
+											*set power_mastery +10
+											(+10 Power Mastery!)
+											*line_break
+										*if (cunning <= 90)
+											*set cunning +10
+											(+10 Cunning!)
+										*goto route2success
+										
+
+
+
+			*if (power = "Hypnosis") #Hypnotize them both.
+				If your're gonna hypnotize them, you're gonna have to get them to watch you dance. You take a deep breath, and then jump out from the side of the building. 
+				*line_break
+				"Hey guys!" you shout, "Look at this!"
+				*line_break
+				Startled the security guard turns towards you and puts a hand on the gun strapped to her belt. The driver just stares at you in confusion. There's no turning 
+				back now. You start doing the chicken dance, and music magically fills the air around you...
+				*if (check4 <= power_mastery)
+					...and they are mesmerized by your sick dance moves! The only thing either of them can do is watch as you flail your arms and legs in an 
+					attempt to resemble a chicken, and when you hit the last step the suddenly stand up straight and stare forward blankly. They have been thoroughly 
+					hypnotized!
+				*if (power_mastery <= 90)
+					*set power_mastery +10
+					*line_break
+					(+10 Power Mastery!)
+					*page_break
+					"What do you request of us, master?" they both ask in synchronized monotony. 
+					*choice
+						#Give me the money and get in the back of the transport truck. I've got an idea.
+							"Give me the money," you bark.
+							*line_break
+							"As you wish," the driver says, grabbing the suitcase and handing it to you.
+							*line_break
+							"Good," you say. "Now, both of you get in the truck. I'm going to lock you in, and when the cops arrive you are going to tell them 
+							that the bank teller stole the money and locked you in. If they don't believe you or if the teller denies it, you are to attack the cops and start 
+							beating them up."
+							*line_break
+							"Sounds like fun," the security guard blankly says. They step into the back of the truck and stare as you lock them in. No matter what happens to them 
+							now, it should help distract the cops from your machinations!
+							*line_break
+							*if (cunning <= 95)
+								*set cunning +5
+								(+5 Cunning!)
+								*line_break
+							*if (morality <= 95)
+								*set morality +5
+								(+5 Evil!)
+								*line_break
+							Now that that is taken care of, you head back home with the money.
+							*goto route2success
+	
+						#Grab the money and come with me. You're my henchmen now.
+							"Grab the money and follow me," you order. "You two are my evil henchmen now."
+							*line_break
+							"As you wish, master," the guard says, dragging the suitcase behind her as she starts to follow you.
+							*line_break
+							"Don't worry master, I'll be the best at henching!" the driver enthusiastically shouts as he joins you. 
+							You can already tell this guy is gonna be a pest.
+							*if (support <= 98)
+								*set support +2
+								*line_break
+								(+2 Followers!)
+							*page_break
+							You take your two new henchpeople to your evil lair, and set them up as your personal assistants/housekeepers/whatever. 
+							More importantly, you've made it back with the money! Whooo!
+							*goto route2success
+				
+				*else
+					...before beign quickly interrupted by a gunshot! The security guard is having none of this crap, and does not hesitate in firing a warning shot. 
+					*line_break
+					"Get away from here!" she shouts. "I won't miss next time!"
+					*choice
+						#Get away from there
+							You do as she says, and immediatly start running. Your legs don't stop running at super-sonic speed until you are safe in the confines of your 
+							apartment. You've managed to escape with your life... but not with any cash...
+							*goto route2fail
+			
+						#Fire back at her
+							You immediatly draw the freeze-ray, and fire an ice bolt at the driver and security guard. The guard tries to shoot back, but her draw is not quick enough! Before 
+							her bullet can fully leave the gun, the ice hits it! It engulfs the gun, slowly spreading over the gun and the woman attatched to it until both of them are trapped within a 
+							block of ice. The driver attempts to run, but finds himself struck in the back and victim of the same fate. Both threats are now frozen solid!
+							*page_break
+							So with them taken care of, the rest of the heist is pretty simple. Just have to walk over to the suitcase with the cash and roll it back to 
+							your evil lair. That was easy. Shame you weren't able to finish the dance and turn them into your loyal henchmen though, maybe next time.
+							*goto route2success
+	
+						#Run and try to grab the money
+							Panicking, you charge at the two in a mad dash to get the money. Practically frothing at the mouth, your stampede is stopped short when 
+							the security guard screams and uloads her pistol into your chest. You come to a halt, and look down at the five holes in your chest. 
+							*line_break
+							"Well, this sucks," you say as you die.
+							*goto dead
+
+
+
+
+
+
+	*comment TRANSPORT IN MOTION_______________________________________________________________________________________________________________________________________________
+	
+	#A street on the transport's route, to ambush it while in transit.
+		*temp check007 0
+		*rand check007 0 100
+		The transport is supposed to go throw a spooky, dark, one-way road in an alley... the perfect place to ambush it! You set up camp there, behind a dumpster where the 
+		transport likely can't see you. When the clock hits 12:47 pm (when the transport should arrive), you see dim headlights appear at the end of the alley. It is time to strike!
+		*line_break
+		So... how will you strike?
+		*choice
+			#Freeze the tires and stop the transport in its tracks
+				As the truck draws near, you pull out your freeze-ray and fire at one of the front tires. Ice covers the rolling rubber, before it suddenly pops! 
+				The front of the truck leans into the ground, and it suddenly veers off-course and crashes into the wall just feet in front of you!
+				*page_break
+				The driver is trapped inside of the vehicle, as his side of the transport is now inside the building. This is your best chance to get the money! You run to 
+				the back of the truck... where you see the locked door. You've got to get inside somehow, but how?
+				*choice
+					#Help the driver out and get the key
+						You climb up to the passenger side door and open it. Inside, the driver is trying to shove the crushed driver's-side door open. 
+						*line_break
+						"Come out this way!" you shout. He looks at you, relieved, and you help him climb out.
+						*line_break
+						"Thanks for saving me," he says. "I don't know what I'd do if you didn't! How can I ever repay you?"
+						*choice
+							#Ask him the unlock the back
+								You politely ask him to unlock the back of the truck.
+								*line_break
+								"Sure," he says, and walks over to the back and ulocks it for you. You notice there is a concussion on the back of his head...
+								*line_break
+								"Do you want the money too?" He asks. 
+								*line_break
+								"I'll take it if you're offering it," you nochalantly say. He wheels it over and hands it to you. As soon 
+								as you grab the handle, you immediatly turn around and start running before he can properly realize what just happened. 
+								After a few seconds you hear him shouting after you, but its too late now! The money is yours!
+		
+							#Freeze him and steal the keys
+								You pull out the freeze-ray, and trap the poor driver in a block of ice. However, you realize your mistake as soon as you pull the trigger. 
+								The keys are now stuck in the ice too. You've got to find another way to get into the back, and the ice gives you an idea...
+								*page_break
+								Now that you've played this dumb, its time to change things up. 
+								*goto freezetruck
+	
+							#Knock him out and steal the keys
+								You punch the driver in the face, and he falls backwards. The pack of his head slams into the metal truck, and he falls forward to the 
+								ground with a "plop." You reach over into his pocket and grab the keys. After trying them out for a bit, you find the one for the truck and unlock the back.
+								*if (strength <= 95)
+									*set strength +5
+									*line_break
+									(+5 Strength!)
+								*page_break
+								*goto insidetruck
+		
+							*if (power = "Hypnosis") #Hypnotize the driver into giving you the money
+								"Watch this," you say and begin chicken dancing. He shrugs and watches you dance. As soon as you finsihs, he stands at attention and 
+								stares at you blankly. 
+								*line_break
+								"Unlock the truck and give me the money," you command. 
+								*line_break
+								"Yes master," he says, and he proceeds to fulfill your orders.
+								*if (power_mastery <= 95)
+									*line_break
+									*set power_mastery +5
+									(+5 Power Mastery!)
+								*page_break
+								The driver hands you the money, and you immediatly take off and abandon the entranced guy at the crash scene. You've got the money now,
+								and that's all that matters now. Success!
+								*goto route2success
+								
+						
+					#Use the freeze-ray
+						*label freezetruck
+						You decide to play this smart. You turn the freeze-ray to its lowest setting, "Artic Chill", and outline the locked door of the truck with 
+						the freeze-beam. The metal begins cooling and contracting, and the transport starts moaning and groaning as it visible shirnks. Finally, the locked door 
+						just pops off once the border finally grows too small to contain it. Now you can get into the transport truck!
+						*if (cunning <= 90)
+							*line_break
+							*set cunning +10
+							(+10 Cunning!)
+						*page_break
+						*goto insidetruck
+						
+			
+					*if (power ="Super Strength") #Use your power to rip the door off.
+						You pull out a can of expired spinach and eat it. You gag a bit, but manage to force it down. Energy zaps through your body, increasing your 
+						muscle mass and strength! You easily grab the back door of the transport and rip it off of the vehicle! 
+						*if (power_mastery <= 95)
+							*set power_mastery +5
+							*line_break
+							(+5 Power Mastery!)
+						*page_break
+						*label insidetruck
+						Inside the truck is a single large suitcase. You climb in and open it, to reveal thousands of hundred dollar bills inside. Score! You zip the suitcase back up, 
+						jump out of the truck, and run back to the evil lair with your new cash supply. 
+						*goto route2success
+
+
+			#Jump in front of it and force it to stop
+				As the transport truck nears, you jump out in front of it and scream "STOP!"
+				*line_break
+				*label splat
+				The panicking driver slams on the brakes, and you hear the tires screech as the truck slams into you!
+				*line_break
+				It was going too fast, and you jumped out too late. There is a sickening squishing sound, and everything goes black.
+				*page_break
+				As your spirit begins floating off into the afterlife, you see what remains of your body as a huge splatter underneath the armored transport. 
+				Did you expect something else to happen when you jumped in front of a truck? Game over, man.
+				*ending
+
+
+
+		
+			*if (power = "Super Strength") #Activate your power and catch it
+				You pull out a can of nasty spinach, rip off the lid and swallow it all in one gulp. It smells rancid as it travels into your stomache, but you 
+				can feel something surging throughout you. Without hesitating, you jump out into the road and reach you arms out to catch that truck!
+				*page_break
+				*if (check007 <= power_mastery)
+					Your muscles suddenly quadrupple in size, and right as the truck is about to mow you down you grab onto the front grill and effortlessly 
+					toss the truck into the air! It flips a few times, and lands right on its back! The force of the impact crushes the roof, popping the reinforced 
+					doors right off the back. A beat-up suitcase tumbles out. When you investigate it, you find all of the money you are looking for inside!
+					*if (power_mastery <= 85)
+						*set power_mastery +15
+						*line_break
+						(+15 Power Mastery!)
+					*page_break
+					You don't have much time to celebrate though, as the sound of sirens suddenly fills the air and begins getting louder. You grab the suitcase and run 
+					back to your evil lair with your ill-gotten gains! All it cost was that poor deliver driver's life.
+					*if (morality <= 90)
+						*set morality +10
+						*line_break
+						(+10 Evil!)
+					*goto route2success
+		
+				*else
+					But your muscles fail you! The food poisoning is too bad, and you collapse and begin vommiting right as the truck is upon you!
+					*line_break
+					*goto splat
+
+
+*comment ROUTE 2 SUCCESS_______________________________________________________________________________________________________________________________________________________
+
+*label route2success
+*comment get money
+*page_break
+*set money +bankmoney
+
+Today was a very successful robbery! You obtained $${money}! This should be sufficient funding for your world domination efforts. Just make sure that you spend it carefully...
+*finish
+
+
+
+
+
+*comment ROUTE 2 FAILURE_______________________________________________________________________________________________________________________________________________________
+
+*labe route2fail
+*comment can continue, but can't afford any money locked choices
+*page_break
+Well, this is a problem. You've lost the chance to get the money you need to take over the world. Might as well give up now. 
+*line_break
+Or you could keep pushing. It will be harder, and you might not be able to do everything you want to do, but if you have the dedication you might be able to pull this off. 
+After all, would a true villain give up when the going gets tough?
+*line_break
+I guess the choice is up to you.
+*choice
+	#Give up
+		This is just too difficult. The life of a villain just isn't for you. You gave it a shot, but Creep E. Mann is gonna have to find someone else to be his successor. You're done.
+		*ending
+	#Keep moving forward
+		You're not giving up now! No matter how hard the path ahead is, you will conquer the world! As long as you are careful, there's surely a way to pull this off.
+		*finish
+
+
+
+
+
+
+
+
+
+
+
+
+
+

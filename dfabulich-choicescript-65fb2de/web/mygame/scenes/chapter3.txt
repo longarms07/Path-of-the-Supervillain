@@ -1,0 +1,938 @@
+*set day +1
+
+*label start1
+(Day ${day})
+You wake up at the sound of your alarm, and roll over to turn it off. You slap it, silencing its incessant shrieks. You open your eyes, and standing in front 
+of you is a strange man in a buisness suit. He has glowing red eyes, horns jutting out of his finely trimmed hair, and is clutching a clipboard to his chest as 
+he stares directly at you. You immediatly jump up.
+*line_break
+"Who are you!" you shout.
+*line_break
+"I'm your new personal assistant, Baalphisto the Bringer of Death," he says. "But you can call me Baab. Mr. Mann sent me to assist you in the next phase of your 
+world domination. Clean yourself up quickly, there is a lot to discuss and we will need all the time we can get.
+*page_break
+You shower and get dressed, and then head out to the living room where Baab is sitting and writing on his clipboard.
+*line_break
+"You took more than three seconds," he says, scribbling furiously. "I'll have to rearrange some of the schedule. But first, there are more important things to attend to. 
+The next phase of your global takeover gambit is getting support from the common people. Once we win them over, we'll have enough support to actually keep control of the 
+world this time."
+*line_break
+"How are we going to do that?" you ask.
+*line_break
+"Well, that is really up to you," Baab replies.
+*page_break
+"The first step will be making your presence known to the world," he says. "You'll need to have your grand debut, and announce yourself as a major player who intends to 
+conquer this miserable rock. Once people know who you are, we can start getting fans. But it's up to you to decide how to introduce yourself to the world. I have two ideas 
+that may work, though they will each reach different demographics of people.
+*line_break
+The first option is to film your big introduction, and upload it to the internet. Everyone can watch and share it, and with some luck it will go viral and win you support among 
+the younger population and solidify support for decades to come. Or, we can hold a big press conference event where you reveal yourself as the new greatest villain on live TV. 
+You'll reach an older demographic, one that may have more current world power, and will have dedicated reporters circling the news for you with no luck required. Which sounds good to you?"
+*choice
+	#Film your debut and put it online
+		*temp debut "online"	
+		"Let's take the online approach," you answer. 
+		*line_break
+		"Excellent," Baab says. "I'll let you write the script while I go purchase the materials we need. Cameras, lights, editing software, microphones, anything to help production. 
+		I will need you to allocate funds for it, of course. The more money you can spare, the higher the production quality will be."
+		*line_break
+		What will Baab's budget be?
+		*choice
+			#$0
+				*temp pvalue "none"
+				"Um, no money?" Baab says. "I guess we'll just have to use your laptop's cam and microphone. I can't promise that the video will be good, but I'll see what I can do... 
+				In the meantime, get started with writing your script."
+				*goto scriptw
+
+
+			*selectable_if (money >= 300) #$300
+				*temp pvalue "good"
+				*set money -300
+				"$300?" Baab confirms, "good. I should be able to get some decent equipment with that. I'll go shopping and get everything set up for recording, you start working on the script."
+				*goto scriptw
+
+
+			*selectable_if (money >= 2000) #$2,000
+				*temp pvalue "best"
+				*set money -2000
+				"$2000 is perfect!" Baab exclaims. "I'll be able to get the highest quality equipment for us! It won't even be possible to have a higher quality debut video than the one I'll give you! 
+				You know, as long as the script is up to snuff. I'll go purchase and set everything up, you go get started on that script."
+				*goto scriptw
+
+
+
+	#Announce yourself at a press conference
+		*temp debut "press"
+		"I think we should hold the press conference," you say."Can you set it up for tonight?"
+		*line_break
+		"Of course I can!" Baab says. "What kind of personal assistant would I be if I couldn't? I'll just need you to allocate me a budget. I need funds to advertise, rent an area, and hire a bunch of people to 
+		cover us on TV. It'll be a bit pricey, but the more you can spare the better."
+		*line_break
+		How much money will you give him?
+		*choice
+			#$0
+				*temp pvalue "none"
+				"Are you serious?!" Baab shouts. "How am I supposed to work with that? Ugh. You know what? Fine. I'll figure something out. Just... just work on the script while I'm gone."
+				*goto scriptw
+			
+			*selectable_if (money >= 1000) #$1,000
+				*temp pvalue "good"
+				*set money -1000
+				"Alright, I can work with this," Baab says. "I'll rent out a decently-sized room, get a bunch of networks in, it'll be great. Start working on the script for your speech, I'll 
+				take care of everything else."
+				*goto scriptw
+
+			*selectable_if (money >= 10000) #$10,000
+				*temp pvalue "best"
+				*set money -10000
+				"That's alot!" Baab shouts. "I'll be able to rent a huge venue, I can get pretty much every news network in the country, and I'll be able to advertise everyone! I'm glad to see that 
+				you are taking this seriously, sir. You start preparing your speech, I'll get all this taken care of. You won't be disappointed!"
+				*goto scriptw
+
+
+*label scriptw
+*page_break
+
+Baab gets up, bows, and exits the apartment. You  do as he says, and start writing the script for your debut.
+*page_break
+Introduce who you are, explain that you plan to take over the world, and tell people why they should follow you, and include anything else you deem necessary.
+*temp script ""
+*input_text script
+*page_break
+
+Once you finish writing the script, you practice reading it over and over until you have fully memorized it.
+After a few hours, Baab returns. 
+*line_break
+"Everything is ready, ${name}," he says. "I trust that you have prepared what you are going to say?
+*line_break
+"Yep, all ready now," you reply.
+*line_break
+"Perfect," he says. "Come with me, let's get started."
+
+*page_break
+*if (debut = "online")
+	*goto debuto
+*if (debut = "press")
+	*goto debutp
+
+*comment ONLINE VIDEO___________________________________________________________________________________________________________________________________________
+*label debuto
+
+You follow Baab into the next room, which he has transformed into a recording studio.
+
+*if (pvalue = "none")
+	There is a stool for you to sit on, with your laptop open and pointing towards it with the webcam on. 
+	*line_break
+	"I know it's not much," Baab says, "but it is all that we've got. I'm ready when you are."
+	*line_break
+	"Let's get this over with," you say.
+	*page_break
+		
+	Baab clicks the "Start Recording" button with his wireless mouse.
+	*line_break
+	"We are ready in 3... 2... 1... go!" he says.
+	*line_break
+	"${script}"
+
+	*page_break
+	"Aaaaaand cut!" Baab says. "Now I just have to upload this video, since I don't have anything to edit it with, and let the internet do its work. It's gonna take a bit, and its already late, so why don't you head to bed? The video will be up and hopefully viral by the time you wake up, so we can move forward 
+	from there."
+	*goto debut_done
+
+*if (pvalue = "good")
+	There are lights pointed at a comfy chair to perfectly illuminate you, with a pretty nice camera and microphone set pointed to where you'll sit. 
+	You take your seat, and get yourself ready.
+	"Let's begin," you say.
+	*page_break
+
+	Baab clicks the "Start Recording" button with his wireless mouse.
+	*line_break
+	"We are ready in 3... 2... 1... go!" he says.
+	*line_break
+	"${script}"
+
+	*page_break
+	"Aaaaand cut!" Baab says. "Well done, ${name}! I'll edit this tonight to make sure everything is perfect, and get it uploaded to the internet to do its work. It's gonna take a bit, and its already late, so why don't you head to bed? The video will be up and hopefully viral by the time you wake up, so we can move forward 
+	from there." 
+	*goto debut_done
+
+*if (pvalue = "best")
+	You hardly recognize the place! Soundproof padding covers each of the walls, and a massive high-quality camera and the best microphone money can buy are set up 
+	in front of the comfiest looking recling chair you have ever seen! You couldn't even imagine a better recording set up in your wildest dreams if you tried.
+	*line_break
+	"Lets get this show rolling!" you say.
+	*page_break
+	
+	Baab clicks the "Start Recording" button with his wireless mouse.
+	*line_break
+	"We are ready in 3... 2... 1... go!" he says.
+	*line_break
+	"${script}"
+
+	*page_break
+	"Aaaand cut!" Baab says. "That was perfect! If this video doesn't go viral, then I don't know what will! This will be the best villain debut the world will ever see! 
+	I just need a bit of time to edit it and make it as awesome as possible, and then I'll get it uploaded all over the internet. It's gonna take a bit, and its already late, so why don't you head to bed? The video will be up and hopefully viral by the time you wake up, so we can move forward 
+	from there."
+	*goto debut_done
+
+
+
+
+
+
+
+
+
+
+
+
+*comment PRESS CONFERENCE____________________________________________________________________________________________________________________________________________________
+*label debutp
+
+Baab walks you over to your press conference site.
+
+
+*if (pvalue = "none")
+	It's a small public park, where a few reporters and camera men are sitting in front of the stone ampitheatre.
+	*line_break
+	"I know that not many people are here," Baab says, "but all the other news outlets will just reuse their footage. We just need someone to listen and they will pass it along. 
+	Now, are you ready?"
+	*line_break
+	"Let's  just get this over with," you say.
+	*page_break
+		
+	You step up to the podium at the amphitheatre. One of the reporters starts taking pictures. You pick up a bottle of water and take a drink, and then you start speaking.
+	*line_break
+	"${script}"
+
+	*page_break
+	As you finish, the reporters jump up and start dogging you with questions.
+	*line_break
+	"I told you already, there will be no Q and A portion!" Baab shouts, jumping on-stage in front of you. "${name} has said all that they are going to say right now. We will announce more soon!" 
+	*line_break
+	Baab leads you away, and the two of you return home.
+	*page_break
+	"All that remains now is for the reporters to do their jobs," Baab says. "You look pretty tired after that. Why don't you go get some sleep?"
+	*goto debut_done
+
+*if (pvalue = "good")
+	It's a small rented room at the convention center, and as you walk in you see that the room is already filled with a few dozen reporters and camera men ready to hear what you have to say.
+	*line_break
+	"You ready?" Baab asks.
+	*line_break
+	"Let's begin," you reply.
+	*page_break
+
+	You take a drink of water, and start your speech.
+	*line_break
+	"${script}"
+
+	*page_break
+	As you finish, the reporters jump up and start dogging you with questions.
+	*line_break
+	"I told you already, there will be no Q and A portion!" Baab shouts, jumping on-stage in front of you. "${name} has said all that they are going to say right now. We will announce more soon!" 
+	*line_break
+	Baab leads you away, and the two of you return home.
+	*page_break
+	"All that remains now is for the reporters to do their jobs," Baab says. "You look pretty tired after that. Why don't you go get some sleep?"
+	*goto debut_done
+
+*if (pvalue = "best")
+	Baab has rented out the largest room at the local convention center, able to fit about 3000 people. And it is certaintly at maximum capacity! Baab navigates you through the crowd of reporters and camera men,
+	leading you to the podium on stage. You take your spot, and all eyes immediatly go to you.
+	*line_break
+	"Ready?" Baab asks.
+	*line_break
+	"Lets get this show rolling!" you reply.
+	*page_break
+	
+	You take a drink of water, and begin.
+	*line_break
+	"${script}"
+
+	*page_break
+	As you finish, the reporters jump up and start dogging you with questions.
+	*line_break
+	"I told you already, there will be no Q and A portion!" Baab shouts, jumping on-stage in front of you. "${name} has said all that they are going to say right now. We will announce more soon!" 
+	*line_break
+	Baab leads you away, and the two of you return home.
+	*page_break
+	"All that remains now is for the reporters to do their jobs," Baab says. "You look pretty tired after that. Why don't you go get some sleep?"
+	*goto debut_done
+
+
+
+*comment DEBUT DONE__________________________________________________________________________________________________________________________________________________________________
+*label debut_done
+*if (pvalue = "none")
+	*temp views 10000
+*if (pvalue = "good")
+	*temp views 1000000
+*if (pvalue = "best")
+	*temp views 100000000
+*set day +1
+
+
+
+
+Sleep sounds like a great idea right now, and you collapse on your bed within minutes.
+*page_break
+(Day ${day})
+*line_break
+When you wake up the next morning, Baab is standing at the side of your bed once again.
+*line_break
+*if (debut = "online")
+	"Good news, ${name}," Baab says. "The video went viral, and now everyone knows who you are and who their new ruler will be. 
+*if (debut = "press")
+	"Good news, ${name}," Baab says. "The press conference was a success, and all the major news outlets are circulating it. 
+
+Sure, some people think it's all a joke, but the vast majority of the ${views} viewers seem to realize that you are serious about your mission, and we can work with that. Speaking 
+of which, I just recieved notice of the perfect opportunity to do so."
+
+*page_break
+"What would that be?" you ask.
+*line_break
+"The apparently 'famous' Jarry O'Rian heard about you," Baab says, "and figured that you would be the perfect victim of roasting to promote his joke of a career. He has invited us to appear on his nightly 
+talk show, either tonight or tomorrow at our convenience. Now, my personal opinions of his program aside, he has millions of viewers from all age groups. With the viewership he has, we can 
+use your appearance on the show as a springboard and turn his fans into your fans. If you can give a good enough performance, it should be as easy as taking candy from a house on Halloween."
+*page_break
+
+"Now," Baab continues, "he requires a decsion soon as to when you can show up. He's got a schedule to plan and all. I would personally reccomend that you appear tomorrow, so that we have an extra day to 
+prepare and all. Of course, we have to be mindful of the amount of time that we have left. What do you think?"
+*choice
+	#Appear on the show tonight
+		*goto show
+
+	*selectable_if (day <=3) #Appear on the show tomorrow 
+		*goto daybefore
+
+*comment DAY BEFORE SHOW_______________________________________________________________________________________________________________________________________________________________________________________________
+*label daybefore
+"Schedule it for tomorrow," you reply, "I'll need some time to prepare."
+*line_break
+"Excellent choice," Baab says, "I'll set everything up for the show. You focus on preparing yourself and getting stronger." He bows, then departs.
+*page_break
+So, how will you spend your day?
+*choice
+	#Practice using your superpower
+		You spend the day practing your superpower, utilizing every opportunity to exercise your abilites and master you abilities. You see massive 
+		improvements, and are more confident in your power than you had ever imagined you'd become!
+		*if (power_mastery <= 80)
+			*set power_mastery +20
+			*line_break
+			(+20 Power Mastery!)
+			*goto enddbs
+		*else
+			*set amount (100-power_mastery)
+			*set power_mastery +amount
+			*line_break
+			(+20 Power Mastery!)
+			*goto enddbs
+
+	#Go to the forest and punch all the trees
+		This morning, there was a forest on the outskirts of town. It was a small forest, but a beautiful one nonetheless. 
+		*line_break
+		Now, there is naught but a pile of woodchips.
+		*line_break
+		You went out there, and punched all the trees. All of them. You punched the trees until they collapsed into pieces. No tree is capable of withstanding 
+		the sheer force behind your punches now!
+		*if (strength <= 80)
+			*set strength +20
+			*line_break
+			(+20 Strength!)
+			*goto enddbs
+		*else
+			*temp amount (100-strength)
+			*set strength +amount
+			*line_break
+			(+20 Strength!)
+			*goto enddbs
+
+	#Play sudoku until you run out of puzzles
+		You deserve a medal. It started simple, just solving simple sudoku puzzles for fun. Did the ones in the day's paper, a few in an activity book, a couple thousand online...
+		You've looked it up. There aren't anymore sudoku puzzles you can do. You have solved literally every possible combination imaginable. Seriously, you need to get a life. But 
+		at least you're smarter now!
+		*if (cunning <= 80)
+			*set cunning +20
+			*line_break
+			(+20 Cunning!)
+			*goto enddbs
+		*else
+			*temp amount (100-cunning)
+			*set cunning +amount
+			*line_break
+			(+20 Cunning!)
+			*goto enddbs
+
+	#Play mean pranks on everyone in the city.
+		You run around rampant in the city, coating every building in toilet paper and rotten eggs. Pretty much every civilian you pass gets their pants pulled down, and fake parking tickets are 
+		left on every car. And all that is done in only one hour! You do every prank in the book, write a new book of pranks, and do every prank in that book! Authorities are still baffled by the 
+		magnitude of the prank epidemic you caused. Mwahahahahaha!
+		*if (morality <= 80)
+			*set morality +20
+			*line_break
+			(+20 Evil!)
+			*goto enddbs
+		*else
+			*temp amount (100-morality)
+			*set morality +amount
+			*line_break
+			(+20 Evil!)
+			*goto enddbs
+
+
+*label enddbs
+After you finish up your training for the day, you immediatly jump into bed and fall asleep. All that work was exhausting! But hey, it was definently worth the effort!
+*page_break
+
+*set day +1
+(Day ${day}.)
+*line_break
+When you wake up, Baab is standing by your bed once more.
+*line_break
+"Today is the day of the big show," he says. 
+*goto show1
+
+
+
+
+*comment SHOW_____________________________________________________________________________________________________________________________________________________________________________________________________________
+*label show
+"We don't have much time," you say, "let's do it tonight."
+*line_break
+"Certainly, I'll get things started right away," Baab says. 
+*label show1
+"The first order of buisness is this: Jarry O'Ryan sent you a questionaire to fill out, presumably so he can get ammunition for jokes at your expense. Your answers will most likely 
+be brought up during the show, so take care while answering them. I'll leave this here with you while I finish the other preparations."
+*line_break
+He hands you the questionaire, and you begin filling it out.
+*page_break
+
+*temp q1 ""
+*temp q2 ""
+*temp q3 ""
+*temp q4 ""
+*temp q5 ""
+
+"Question 1: What is the adjective that best describes you?"
+*input_text q1
+
+*page_break
+
+"Question 2: Name the first '-ing' verb that comes to your head."
+*line_break
+"(Yes I realize that is not a question you can stop pointing that out now people!)"
+*input_text q2
+
+*page_break
+
+"Question 3: What is your favorite place to shop?"
+*input_text q3
+
+*page_break
+
+"Question 4: Cats or Dogs?"
+*choice
+	#Cats
+		*temp q4 "cats"
+		*goto question5
+	#Dog
+		*temp q4 "dogs"
+		*goto question5
+
+*label question5
+*page_break
+
+"Question 5: What is the first noun you can think of?"
+*input_text q5
+
+*page_break
+
+You finish the questionaire as Baab returns.
+*line_break
+"Ah good, you're done with that nonsense," he says, "I've gotten everything taken care of. We shall head to the studio shortly, to get through security and such. I hope that you are ready for this."
+*line_break
+Are you ready for this?
+*choice
+	#Yes
+		Good, because it's time!
+		*goto showstart
+	#No
+		Too bad, it's happening now!
+		*goto showstart
+
+
+
+
+
+*comment LIVE SHOW______________________________________________________________________________________________________________________________________________________________________________________________
+*label showstart
+
+
+*temp approval 50 
+
+
+
+
+A few hours pass.
+*page_break
+
+"Ladies and gentlemen, it is time for the Today Show with Jarry O'Ryan!" a loud booming voice shouts. Jarry walks on stage, waving and blowing kisses at the camera while the speakers play the prerecorded cheering of 
+the "live" audience. 
+*line_break
+"Thank you, thank you everybody!" Jarry says as he takes a seat. "Today, we have a very special guest with us tonight. You may have heard about them after their recent debut comedy piece, where they claimed that they were 
+going to take over the world! I would like you all to welcome ${name} to the stage!"
+*line_break
+The cheering begins again, as you walk on stage and take a seat on the couch.
+*line_break
+"I'd just like you all to know," you say as the cheers die down, "that I wasn't joking. I am going to take over the world."
+*page_break
+
+Jarry starts laughing, but he suddenly stops when he looks at your face. 
+*line_break
+"Wait, you're serious?!" he shouts, jumping up from his seat. "How does a ${q1} person like you plan to do that?!?"
+*choice
+	#I don't know.
+		"I dunno," you say nonchalantly. "It's just gonna happen. This time next week, I'll be in charge of this whole planet."
+		*line_break
+		"Idk man," Jarry says. "If you haven't even decided how you're going to do that yet, I don't see how you're going to be a good ruler."
+		*line_break
+		He presses a button, and a laugh track starts playing.
+		*page_break
+		"I'm not going to be a good ruler," you reply. "I'm gonna be an evil one. That's kinda the point."
+		*line_break
+		You walk over by Jerry and press the laugh track button.
+		*line_break
+		Jarry awkwardly laughs. "Um, alright... let's move on now..."
+		*if (debut = "online")
+			*if (approval <= 80)
+				*set approval +20 
+		*if (debut = "press")
+			*if (approval >= 20)
+				*set approval -20
+		*goto show2
+		 	
+
+	#I'll force everyone to surrender to me.
+		"It's simple," you say. "I'll take it by force. Using the most powerful weapons science can build and the greatest army money can buy, as well as my amazing abilities, 
+		I will attack the world's powers and make everyone surrender. I don't care if anyone wants me to be their new ruler, there is only going to be one person on this forsaken planet 
+		who has any choice in the matter and that is going to be me!" 
+		*line_break
+		Jarry stares at you, jaw dropped,.
+		*line_break
+		"Well, um, alright then..." he says, "uh, let's move on..."
+		*if (debut = "online")
+			*if (approval <= 90)
+				*set approval +10 
+		*if (debut = "press")
+			*if (approval >= 10)
+				*set approval -10
+		*goto show2
+		 	
+	
+	#I'll make people willingly give me control.
+		"Easy," you say. "I will make everyone want me to rule the world. I mean, look at the awful condition this place is in as is! Wars, disease, awful tv show personalities 
+		running talk shows... its absolute chaos! I will bring an order to everything, though. With everything centralized under one ruler, me, the only bad things that will be allowed 
+		to happen are those that I want to happen, and if you follow me they aren't gonna happen to you. And since the world will be a much better place under my regime, everyone will 
+		painlessly hand me the world on a silver platter. Trust me, everybody. You want me to rule you."
+		*line_break
+		"That..." Jarry stammers, "is quite a convincing argument. Huh. Didn't expect that... let's see if you can handle this next question..."
+		*if (debut = "online")
+			*if (approval >= 10)
+				*set approval -10 
+		*if (debut = "press")
+			*if (approval <= 90)
+				*set approval +10
+		*goto show2
+		 	
+
+
+
+*label show2
+*page_break
+It only takes a moment for Jarry to regain his composure. 
+*line_break
+"Well, one question remains unclear: why do you want to take over the world? What is your 'tragic' backstory?" he asks, with air quotes.
+*choice
+	#Tell the truth
+		"There's not really anything 'tragic' about it," you respond, mimicing his air quotes. "Creep E. Mann told me to take over the world, and I've got nothing better to do, 
+		so I'm doing that."
+		*line_break
+		"Seriously?" Jarry asks. "That's it? Some creepy man tells you to do the thing, so you do the thing? Ha! What a looser!"
+		*line_break
+		Jarry pushes the laugh track button, and pre-recorded mockery fills the room. 
+		*line_break
+		"Let's change the subject before you make more of a fool out of yourself," he says after the laughs die down. "Though I'm sure you'll still find a way."
+		*if (approval >= 20)
+			*set approval -20
+			*goto show3
+		*else
+			*set approval -(100-approval)
+			*goto show3
+
+	#Give a sob story
+		"Well, you see, when I grew up, I always wanted to be a superhero," you say. "A caped crusader who fights for truth and justice and the violent way! But whenever I told people 
+		about my dreams, they were quickly shot down and killed. 'You can't be a superhero,' they would say. 'Your parents have to die tragically before you can do that, and they certaintly 
+		aren't going away anytime soon!' I was heartbroken. All I wanted to do was to help people, but because I wasn't an oprhan I wasn't allowed. The superhero high school even rejected me 
+		on those grounds!"
+		*line_break
+		"That's a bit sad, but I don't hear anything tragic about it," Jarry says, reaching for the laugh track button. 
+		*line_break
+		"I'm not done yet," you say. "The real tragedy came on  that fateful night in the criminal alleyway. I was walking home with my parents after we watched a film, when suddenly a mugger appeared in 
+		front of us. He demanded my mom's pearl necklace, and when my dad refused, the mugger shot... and missed! My mom punched him in the face and knocked him out, and both my parents were alive when the 
+		cops arrived. It would have been a perfect setup for a superhero origin story, but my parents just had to survive! I was heartbroken! That was my first and only chance to become a superhero, 
+		and it was stolen from me! So I did the only thing I could do, become a villain, and now it is my mission to conquer this world and make it a place where every kid can become who they want to be. No parents 
+		shall stand in anyone's way anymore!"
+		*line_break
+		A tear comes to Jarry's eyes, and he tries to causually wipe it away. He only draws more attention to it.
+		*line_break
+		"I'm... I'm not crying!" he says. "Let's... let's just move on to the next subject!"
+		*if (debut = "online")
+			*if (approval <= 90)
+				*set approval +10 
+				*goto show3
+			*goto show3
+		*if (debut = "press")
+			*if (approval >= 10)
+				*set approval -10
+				*goto show3
+			*goto show3
+
+	#Sing your own praises
+		"It's not so much a matter of a tragic backstory," you say, "but of a goal: this world is screwed. We need a major leadership change if the human race is to survive, and there is only one person 
+		on this entire planet who is worthy of taking on that burden: me. I am not taking overthe world because I want to, oh no. I am taking over the world because I am the only one who can. Only I can 
+		set the human race on course for survival, and create the ideal perfect world."
+		*line_break
+		"And what makes you think that you are worthy?" Jarry asks.
+		*line_break
+		"Process of elimination, basically." you reply. "Someone has to be able to lead this planet, and literally every other person alive isn't. That leaves me left as the sole person responsible for the fate 
+		of everyone."
+		*line_break
+		"And what makes you think that anyone else will agree with you?" Jarry asks.
+		*line_break
+		"Quite frankly, I don't care if they agree with me," you say, shooting him a glare. "But if they don't, they're wrong. And I won't tolerate wasting oxygen on failures."
+		*line_break
+		"Um, alrighty then!" Jerry says. "Uh, I've got the next item of buisness for ya."
+
+		*if (debut = "online")
+			*if (approval >= 10)
+				*set approval -10
+				*goto show3
+			*goto show3
+		*if (debut = "press")
+			*if (approval <= 90)
+				*set approval +10
+				*goto show3
+			*goto show3
+
+*label show3
+*page_break
+ 
+"Alright, this next segment my longtime viewers will know well," Jarry says. "I asked good ole' ${name} here to give me a bit of info about themselves before the show, a character description if you will. Let's see just 
+what kind of person our future 'world ruler' is, shall we?"
+*line_break
+He clears his throat and begins reading:
+*line_break
+"My name is ${name}. I am ${q1}, and live life in a paranoid delusion of granduer. When I have free time, I spend it ${q2} and kicking ${q4}. I only purchase ${q5} when I go to ${q3}, because I am a narcissist who thinks 
+that going around and making huge announcements about world domination is a thing normal people do. I am better than all of you, and my farts are smelly. 
+*line_break
+xoxo,
+${name}."
+*page_break
+
+Jarry pushes the laugh track button, and you sit there fuming. He twisted your words like a demented Madlib, and he wasn't even creative about it! Are you going to tolerate this talentless hack's insults?
+*choice
+	#Play along with his game
+		"Sounds about right," you say. "My turn now! I'm gonna tell the audience what you told me before the show."
+		*line_break
+		"What? Jarry says, shocked. "But I didn't-"
+		*line_break
+		"Hi, my name is Jarry O'Ryan," you say.
+		*temp this
+		*input_text this
+		*page_break
+		
+		"Hi, my name is Jarry O'Ryan. ${this}"
+		*line_break
+		You reach over and hit the laugh track button, while Jarry fumes.
+		*line_break
+		"I didn't say any of that and you know it!" he shouts. "I will sue you for defamation!"
+		*line_break
+		"And you can prove I said the exact quote you attributed to me?" you ask.
+		*line_break
+		He opens his mouth, and then closes it. 
+		*if (approval <= 70)
+			*set approval +30
+			*goto show4
+		*goto show4
+
+	#Refute him.
+		"I didn't say that!" you shout at him.
+		*line_break
+		"Ooh, touchy are we?" Jarry asks, cackling. "Calm down dude, it is just a joke! You really can't take one, can ya?"
+		*line_break
+		He slaps the laugh track button again. 
+		*line_break
+		"You hear that folks? This loser can't even take a joke! How is he supposed to rule the world without a sense of humor?"
+		*line_break
+		That could've gone better...
+		*if (approval >= 30)
+			*set approval -30
+			*goto show4
+		*goto show4
+
+
+*label show4
+A production assistant walks onto the stage, breaking the tension.
+*line_break
+"It's time for the talent portion!" he shouts. "${name} here will show us their best talent! Come on up here to the front, and show us what you've got!"
+*line_break
+Uh oh, Baab didn't warn you about this! Think fast, what is you greatest talent?
+*temp check1 0
+*rand check1 0 100
+*choice
+	#Use you strength
+		"Alright everybody," you say, standing up. "Today, I am going to show my greatest talent: my awesome strength. I'll need you to bring me a phone book, a 200 pound weight, 
+		and a foot thick titanium wall."
+		*line_break
+		"Where are we gonna get all that?" Jarry says. "Come on, show us something with the stuff we have here."
+		*line_break
+		We actually have all that here," the assistant says, "Mr. ${name}'s PA brought them. I'll go get them right now.
+		*line_break
+		Jerry's assistant brings all of the stuff.
+		*page_break
+		You start by walking to the phone book, picking it up and effortlessly ripping it in half. 
+		*line_break
+		"That's easy," Jarry says. "I can do that with a chainsaw! Show us something good!"
+		*line_break
+		"Oh, don't worry," you say, "I will."
+		You pick up the 200 pound weight with ease and balance it on top of your head. Carefully, so as not to tip it, you walk over to the titanium wall and punch it.
+		*page_break
+		*if (check1 <= strength)
+			Your fist slids through the foot of titanium as if it was butter, and the weight on your head doesn't do so much as wobble. You retract your hand from the 
+			mass of metal. It shakes, and suddenly collapses into millions of pieces! Jarry's assistant stares at you in shock, while Jarry stands up and starts clapping.
+			*line_break
+			"I have to say, you legitmately surprised me!" he shouts. "That was actually impressive! Bravo!"
+			*line_break
+			He hits a button, and the "audience" starts cheering.
+			*if (debut = "press")
+				*if (approval <= 90)
+					*set approval +10
+			*line_break
+			(+10 Strength!)
+			*if (strength <= 90)
+				*set strength +10
+				*goto showend
+			*else
+				*set strength +(100-strength)
+				*goto showend
+			
+		*else
+			Your hand makes contact with the metal, and pain immediatly shoots through your body. You scream and clutch it with your other hand, leaning your head forward... 
+			The heavy weight slids off your cranium and lands directly on your foot. You howl and scream as you hop around.
+			*line_break
+			Jarry is laughing so hard that he forgets to turn on the fake audience's laughter, though if a real one were here you have no doubt they'd be laughing just as hard. You really 
+			humiliated yourself here...
+			*if (approval >= 10)
+				*set approval -10
+				*goto showend
+			*goto showend
+			
+	#Use your cunning
+		After thinking for a moment, you settle upon an idea. 
+		*page_break
+		"Alright Jarry," you say with a smile. "I'm going to make a bet with you."
+		*line_break
+		"Oh?" he says. "and what is that?"
+		*line_break
+		"I want you to roll this die," you say, hanidng him a standard 6-sided die. "If it lands on anything other than a number from 1-6, I'll give you five bucks."
+		*line_break
+		"Deal!" Jarry immediatly yells.
+		*line_break
+		"But here's the catch- if literally anything else happens, you will need to give me $500."
+		*line_break
+		"Still a deal!" Jarry shouts.
+		*line_break
+		"Then roll the die," you say with a smile
+		*page_break
+		*if (check1 <= cunning)
+			Jarry pulls his hand behind him and chucks the die like a bowling ball. The camera follows the die as it flies towards the ground, but right before it can land you 
+			kick it up into the air. You discreetly pull out your freeze-ray and turn the die to ice, and when it falls to the ground and shatters into pieces. 
+			*line_break
+			"How did you do that?" Jarry says as he turns to you. You put the freeze-ray away before the camera or Jarry can see it. 
+			*line_break
+			"A true villain never reveals his secrets," you reply. "Now pay up."
+			*line_break
+			He grumbles and hands you the money.
+			*if (debut = "online")
+				*if (approval <= 90)
+					*set approval +10
+			*line_break
+			(+10 Cunning! +$500)
+			*set money +500
+			*if (cunning <= 90)
+				*set cunning +10
+				*goto showend
+			*else
+				*set cunning +(100-cunning)
+				*goto showend
+			
+				
+			
+		*else
+			Jarry pulls his hand behind him and chucks the die like a bowling ball. The camera follows the die as it flies towards the ground, but right before it can land you try 
+			to kick it into the air... and miss. The die lands on 6.
+			*line_break
+			"Ha!" Jarry shouts. "I knew you would try to cheat! But you can't fool me! Pay up!"
+			*line_break
+			*if (money >= 5)
+				You begrudgingly hand over $5.
+				*set money-5
+			*if (money < 5)
+				You hand over an IOU. 
+			*if (approval >= 10)
+				*set approval -10
+			*goto showend
+
+	#Use your superpower
+		"You guys are in for a treat," you say, "I'm going to show off my super power!"
+		*line_break
+	
+		*if (power = "Super Strength")
+			You pull out a convenient can of orange expired spinach, rip off the lid, and chug it as Jarry watches in disgust.
+			*if (check1 <= power_mastery)
+				Your muscles suddenly swell up like a balloon, growing to almost cartoonish porportions. You easily lift up the couch you had been sitting on and toss it into the air. 
+				You then proceed to do the same with Jarry's desk and his chair- with him on it.
+				*line_break
+				"What are you doing!" he shouts as he starts falling to the ground.
+				*line_break
+				"Juggling!" you exclaim, as you catch him with one hand, launch it to the other, and do the same with the other items as they come. Despite how heavy everything is, 
+				you have no issues at all juggling the items. You manage to keep it up for three solid minutes, without almost dropping anything once.
+				*page_break
+				Finally, the game gets old and you put everything down.
+				*line_break
+				"That..." Jarry says, "...that was awesome! What a talent!"
+				*line_break
+				(+10 Power Mastery!)
+				*if (debut = "press")
+					*if (approval <= 90)
+						*set approval +10
+				*if (power_mastery <= 90)
+					*set power_mastery +10
+					*goto showend
+				*else
+					*set power_mastery +(100-power_mastery)
+					*goto showend
+			*else
+				Your stomache agrees with Jarry's view of the situation, and starts making bubbling noises as if it were about to boil over. 
+				You fall to your knees, start wretching, and hurl all over the camera.
+				*line_break
+				"I'm not sure if we can show that on TV..." Jarry says.
+				*if (approval >= 10)
+					*set approval -10
+				*goto showend
+		
+
+
+		
+		*if (power = "Invisibility")
+			"But I suggest you cover the eyes of small children," you say, and begin stripping. Luckily, Jarry has the perfect soundtrack for this, and you 
+			throw your clothes off to the beat of his cheesy music. Finally, when you have removed enough articles of clothing, you turn invisible.
+			*line_break
+
+			*if (check1 <= power_mastery)
+				"Holy cow!" Jarry shouts. "This isn't just some trick, ${name} really disappeared!"
+				*page_break
+				But you'll have to do more than that to impress the crowds. You stealthily sneak behind Jarry and pants him as he sings your praises, 
+				and then grab his chair and make it start "flying" around.
+				*line_break
+				"I am the chair ghoooooooost!" you shout, as you chase Jarry with the chair.
+				*line_break
+				"Alright, I think that's enough!" he says, waddling as fast as he can with his pants wrapped around his legs.
+				*line_break
+				(+10 Power Mastery!)
+				*if (debut = "online")
+					*if (approval <= 90)
+						*set approval +10
+				*if (power_mastery <= 90)
+					*set power_mastery +10
+				*else
+					*set power_mastery +(100-power_mastery)
+					*goto showend	
+				*goto showend
+			*else
+				But while you disappear, you still have too many clothes on. Everyone can still perfectly see where you are.
+				*line_break
+				"That's a neat parlor trick I guess," Jarry says, "but not much else. I don't think it was worth raising the age rating of my show, at least...'
+				*line_break
+				Whoops.				
+				*if (approval >= 10)
+					*set approval -10
+				*goto showend
+
+
+
+		*if (power = "Hypnosis")
+			"I will need everybody to keep their eyes glued to the screen" you say, and begin chicken dancing. The music magically starts playing, and all the cameras 
+			shift their attention to you.
+			*page_break
+			*if (check1 <= power_mastery)
+				As you finish your dance, you feel a sudden surge of power. Jarry and his assistant stand at attention, transfixed. Baab walks on stage.
+				*line_break
+				"Excellent work, ${name}," he says. "Everyone who was watching the show is now under your control."
+				*line_break
+				*if (power_mastery <= 90)
+					*set power_mastery +10
+				*else
+					*set power_mastery +(100-power_mastery)
+					*goto nxt
+				*label nxt
+				(+10 Power Mastery!)
+				*set approval 100	
+				*page_break
+				"Fantastic," you say. "To everyone who can here me: You are now my loyal followers! You will do and believe everything I say!Thank you for watching, and await my next orders!"
+				*line_break
+				You can hear the collective "Yes master" of ${views} people. ${approval}% of the audience of the today show now are your loyal followers!"
+				*set support 100
+				*line_break
+				(Achieved Maximum Support!)
+				*goto chapterend
+			*else
+				But the dance is going horribly. You are offbeat, and instead of flailing around like a chicken you are flailing like on with its head cut off.
+				*line_break
+				"I'm just gonna stop you right there," Jarry says, grabbing you. "We've all seen more than enough now."
+				*if (approval >= 10)
+					*set approval -10
+				*goto showend
+
+		
+
+*label showend
+*page_break
+"That's about all the time we have for today's show!" Jarry shouts. "Thank you all for watching, and I would like you all to give a cheer for out special guest ${name}!"
+*line_break
+There is a distinct lack of cheering, as Jarry did not push the button. The show's ending theme plays, and you all head offstage. Baab meets up with you as you are departing.
+*line_break
+"That was quite a successful show," Baab says. "You had ${views} viewers, and of them ${approval}% have pledged their support to your world domination plan. With these numbers, we should be 
+good to enter the next stage of out plan."
+*line_break
+"Excellent," you say.
+*set support +(100-support)
+(Gained Support!)
+*goto chapterend
+
+*comment CHAPTER END__________________________________________________________________________________________________________________________________________________________________________________________________________
+*label chapterend
+*page_break
+You return home and go to bed. You feel far more important now that you have a huge amount of supporters.
+*page_break
+To be continued...
+*ending 
+
+
+
+
+
+
+
+

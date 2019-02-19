@@ -1,0 +1,14 @@
+*stat_chart
+	text Name
+	text Power
+	text Money
+	text Day
+	percent Power_Mastery
+	percent Cunning
+	percent Strength
+	percent Support
+	opposed_pair morality
+		Evil
+		Good
+	
+	

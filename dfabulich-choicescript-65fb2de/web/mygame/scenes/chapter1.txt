@@ -1,0 +1,400 @@
+
+
+*label intro
+It was another waste of a day. Another failed job interview, another lecture from the landlord
+about the late rent, another season of "Spongebob" binged. You collapse into your bed,
+wishing for something more in life... wishing that you could crush all those who wronged you...
+*page_break
+"Hey... hey, you there!"
+*page_break
+You hear something that sounds like a raspy voice talking to you from underneath your bed. Could there be a monster underneath?!
+Probably not, monsters aren't real. Aside from the dozen that attack the city every week...
+*choice
+	#Peek under the bed
+		Just to be safe, you sneak a peek underneath the bed. You are greeted by two white eyes
+		a pristine, shiny smile. Before you can react, a hand shoots forward, grabs your face,
+		and drags you underneath the bed!
+		*page_break
+		*goto weirdo
+	#Go back to sleep, there can't be anything there.
+		You close your eyes and roll back over in bed. You can't quite seem to get comfortable, though.
+		Tossing and turning, it isn't long before both your sheets and pillow find themselves on the 
+		other side of the room. But you still can't get comfortable! Eventually, you roll right off the bed,
+		but the hardwood floor is even worse for your back than the stiff bed. Restless still, you roll under
+		the bed. 
+		*page_break
+		*goto weirdo
+*label weirdo
+Weird ripples of purple and orange fill the space around you as you are swallowed into the depths underneath the bed.
+You travel down as if falling, yet you feel as if you are standing still in the air. After spending what feels like five
+seconds in this state, you see a old man materialize into existence before you.
+
+*line_break
+
+"Hello," the man says. "What is you name?"
+
+*temp da_name
+*input_text da_name
+*set name da_name
+*page_break
+
+"${name}, huh?" the old man says, stroking his chin. "That's quite a name. Mine is Creep E. Mann, but you can just
+call me Conquestoron."
+*line_break
+As soon as you here his name, memories from your childhood come back. Back in the ancient days of print journalism,
+Conquestoron was considered the most dangerous villain the world had ever known. Throughout his career, he stole robbed countless
+banks and stole thousands of dollars! (Back when that actually meant something). He was the first supervillain to go pro, 
+using powers unlike any the world had ever known at a time where there weren't many heroes to stop him. He was even able to 
+successfully conquer the world!
+*line_break
+*line_break
+...for five minutes. He had already been defeated by the time anyone found out he had become supreme overlord, and disappeared
+to never be seen again. At least, until now...
+
+*page_break
+
+"So, are you going to say something?" Creep E. Mann asks, after starring at you long enough for an exposition dump.
+*choice
+	#Say something
+		"Something," you say. 
+		*line_break
+		Creep E. Mann blankly stares at you for a moment, before bursting into laughter.
+		*line_break
+		"Oh my gosh!" he shouts. "We've got a smartalec over here don't we? Kreekeekeek!
+		Ok, ok, I'll be fine, heehee. I just need a minute to recover... alright."
+		*line_break
+		*goto weirdo2
+	#Say nothing
+		You stare.
+		*line_break
+		And stare.
+		*line_break
+		And stare.
+		*line_break
+		And stare.
+		*line_break
+		"Aaaaand I'm just going to continue..." Creep E. Mann says.
+		*line_break
+		*goto weirdo2
+*label weirdo2
+*line_break
+"I was a villain once," he says, "and a darn good- I mean evil- one at that. Heck, for a while I ruled the world!
+But alas, that was the past. I moved on from that life, and now the world has too. But it has just grown so...
+complacent. These modern day villains are nowhere near evil enough to truly frighten the citizens, and superheroes
+are pretty much a dime a dozen now. The world needs someone new to strike terror into its heart! And that- that is
+where you shall come in. Well, maybe you will. First I need to test you."
+*choice
+	#Accept the test.
+		"Perfect!" Creep E. Mann says.
+		*label accept 
+		"Then we shall get started right away. I am going to pull you into my mind,
+		and there I shall show you some hypothetical problems to solve. The methods you choose to approach these
+		with will tell me exactly what kind of person you are. It will be tough, but I'm sure you can pull it off.
+		Let's begin!"
+		*page_break
+		You close your eyes, and everything goes black. You hear Creep E. Mann's voice speaking in your mind:
+		*goto Question1	
+	#Reject the test.
+		"Wait, you're just gonna say no?" Creep E. Mann asks. "I mean, come on! I know that this is a bit... 
+		weird and vauge and all, but I promise it'll be worth it!"
+		*choice
+			#Change your mind.
+				*goto accept
+			#Reject again.
+				"Ok then, if you're sure you don't want to do it then I guess that's fine. I'll
+				just take my leave then."
+				*line_break
+				Creep E. Mann snaps his fingers, and your eyes suddenly shoot open. You find yourself underneath your bed,
+				breathing in dust. Its surprisingly comfortable underneath here, and you return to sleep in no time at all.
+				You never dream of that Mann again.
+				*line_break
+				The end.
+				*ending
+
+*label stats_quiz
+*comment This is more or less a personality quiz to determine the starting values of stats.
+
+*comment Question 1: Evil Points
+*page_break
+*label Question1
+"Say you were hungry, and decided to go make yourself a Peanut Butter and Jelly sandwich.
+You open the cabinent and you see two jars of peanut butter. The jar on the left is
+Crunchy peanut butter, while the jar on the right is Creamy. Which peanut butter do you
+useto make the sandwich?"
+
+*choice
+	#The crunchy peanut butter!
+		"Great choice! The delicious screams of the peanuts as you crush them into
+		oblivion improves the taste of every sandwich! I can tell you are already 
+		beginning your quest to the side of evil."
+		*line_break
+		(+5 Evil)
+		*set morality +5
+		*page_break
+		*goto Question2
+	#The creamy peanut butter!
+		"Creamy peanut butter? How typical. Every goody-two shoes loves creamy peanut 
+		butter! How are you going to become a number one villain if you cannot 
+		appreciate the evil things in life?"
+		*line_break
+		(+5 Good)
+		*set morality -5
+		*page_break
+		*goto Question2
+	#Use both peanut butters! 
+		"B-b-both!? The forbidden combination of the creamy and the crunchy peanut butters,
+		seperated ages ago to preserve the balance of the world? I... I can't believe this!
+		You truly possess a new level of villainy, one that I never could have imagined!"
+		*line_break
+		(+15 Evil!)
+		*set morality +15
+		*page_break
+		*goto Question2
+
+*comment Question2: Support
+*label Question2
+"Your Twitter is looking pretty devoid of followers. At this rate, no one will see your opinions
+on how much the world sucks! This is a huge issue. Clearly, you need to get more people to follow
+you on social media. So the question is... how?"
+*choice
+	#Post the most controversial things you can imagine
+		"Ah, everybody loves a good controversy. You're certain to gain many haters, but
+		the followers you earn will be violently passionate. A delightfully evil soultion
+		to your meaningless problem!"
+		*line_break
+		(+10 Followers. +5 Evil)
+		*set support +10
+		*set morality +5
+		*page_break
+		*goto Question3
+	#Create a bunch of original artwork and memes and post on a regular basis
+		"Wow, you're quite committed to this task... putting in actual effort I see. You've
+		earned quite a loyal fanbase, and I'm sure they'll continue to support you in your
+		quest for villainy. That dedication you put to building your talents, as well as
+		those quality memes, will certainly translate well to masterying other abilities as well."
+		*line_break
+		(+10 Followers. +5 Power Mastery)
+		*set support +10
+		*set power_mastery +5
+		*page_break
+		*goto Question3
+	#Delete the account. Who needs other people, anyways?
+		*page_break
+		"Heh, nice. If you put the time you would spend on Twitter into honing your skills,
+		you'll become a powerhouse in no time at all! Of course, you won't be able to get
+		support too easily if you continue to ignore the rest of the world, but there's
+		always time for that later."
+		*line_break
+		(+5 Evil, +5 Power Mastery, +5 Strength)
+		*comment +5 morality(evil), +5 all stats (have more free time for training)
+		*set power_mastery +5
+		*set morality +5
+		*set strength +5
+		*goto Question3
+
+*comment Question3: Power Mastery
+*label Question3
+"On Friday, there will be a huge fighting game tournament with a $300 prize! You want the
+money, but there's an issue: You suck at the game! With only three days left to prepare,
+you have to do something if you want to win this tournament. So what will that something be?"
+*choice
+	#Train every waking second of the day until you are the very best like no one ever was
+		"You may miss out on a few meals, your social life, and be decades behind on sleep,
+		but no one can beat you now! That one-track determination shall prove to be an 
+		immeasurable force in your quest for world domination!"
+		*line_break
+		(Power Mastery +15)
+		*set power_mastery +15
+		*page_break
+		*goto Question4
+	#Hack into the game before the tournament and rig it in your favor
+		"Well, you certainly won't get any stronger by cheating, but that's the true
+		villain's method of problem solving! Who needs to get strong when it's 
+		impossible for you to lose!"
+		*line_break
+		(+5 Cunning, +10 Evil, -5 Power Mastery)
+		*comment +5 cunning, +10 evil -5 power mastery
+		*set power_mastery -5
+		*set morality +10
+		*set cunning +5
+		*page_break
+		*goto Question4
+	#Show up and play. I'll figure something out.
+		"Despite not preparing at all, you manage to pull out some last minute luck
+		and manage to pull of a win! "
+		*line_break
+		"...Of course, that win was only second place. At least you get an Applebees gift card?"
+		*line_break
+		(+5 Power Mastery!)
+		*set power_mastery +5
+		*page_break
+		*goto Question4
+
+*comment Question4: Cunning
+*label Question4
+"There is a huge science test tomorrow, think 80% of the final grade. If you fail this you
+fail the class. Your grade in this class has been abysmal so far, and unless you can pass
+this test, you will flunk. But you are anything but prepared. Your only option left now is
+to cheat, so how are you going to do it?"
+*choice
+	#Invent a device to read the minds of smarter students.
+		"That was quite possibly the worst thing you could have done! While being able
+		to build such a device is impressive, actually using it is a terrible idea. The
+		mundane thoughts of all the rabble fill and overload your mind, and by the time 
+		someone turns it off your brain is pudding and drool is the only thing you've put
+		on the test. Nice job."
+		*line_break
+		(-5 Cunning)
+		*comment -5 cunning (mind reading has bad consequences, melts your mind)
+		*set cunning -5
+		*page_break
+		*goto Question5
+	#Obtain the test early and engrave a cheat-sheet onto my pencil in morse code.
+		"Getting the test early is no easy feat, but after breaking into your teacher's house 
+		and stealing a copy you'll find it worthwhile. The teacher knows someone took it,
+		but can't prove anything since you returned it in due time. You're, naturally
+		the number one suspect, but your teacher doesn't know morse code and mistakes the
+		cheat sheet as random scratches. You got away with a B+!"
+		*line_break
+		(+10 Cunning)
+		*comment +10 cunning (lots of impressive work)
+		*set cunning +10
+		*page_break
+		*goto Question5
+	#Cheating is for losers! I'm going to study!
+		"...I don't think you understand the point of this challenge. Yes, you get smarter...
+		and yes, you pass... but what was evil about it? Only good guys study! Ugh, I can't 
+		believe you would even hypothetically consider such an option..."
+		*line_break
+		(+5 Cunning, +5 Power Mastery, +5 Good)
+		*comment +5 cunning +5 power mastery (your base argument is wrong but your intelligence is undeniable)
+		*set cunning +5
+		*set power_mastery +5
+		*set morality -5
+		*page_break	
+		*goto Question5
+
+*comment Question5: Strength
+*label Question5
+"If you're going to get anywhere in this world, you've got to be strong. Now, I'm sure you've 
+spent some time both building muscles and wishing you had muscles, but what really matters is
+how much you can lift. To the side of me I have three bags: One countains 10,000 feathers, one
+contains three million poundcakes, and the other contains about one hundred bowling balls. To 
+prove your strength to me, you must lift one of them up and throw it. So, which will it be?"
+*choice	
+	#Pick up the feathers
+		"The feathers may look light, but these are no ordinary feathers! The feathers
+		of the ancient Megaton Falcon weigh 10 tons each, which made it impossible to fly.
+		People would pluck the feathers off the bird to solve this issue, and the bag here 
+		is full of those plucked feathers. You manage to lift up the 100,000 ton bag and
+		effotlessly sling it over your shoulder. What impressive strenght!"
+		*line_break
+		(+20 Strength! Wow!)
+		*comment +20 strength. The feathers may look light, but each weighs 100 tons.
+		*set strength +20
+		*page_break
+		*goto powertime
+	#Pick up the poundcakes
+		"Big mistake, buddy. Though you are perfectly capable of lifting the bag, the second you
+		approach you are overwhelmed by the delcious scent of the poundcakes. Before you know it,
+		the poundcakes are gone and your stomache has bloated to a hundred times its normal width.
+		You seem to be weaker than you were before as well..."
+		*line_break
+		(-5 Strength, +Three Million Pounds...)
+		*comment -5 strength. The poundcakes smell delicious, and you cannot resist eating them
+		*set strength -5
+		*page_break
+		*goto powertime
+	#Pick up the bowling balls
+		"You pick up the bowling balls. Though they are heavy, the task is easy for one as powerful 
+		as you! With a little more training, you will be able to prevent anyone from standing in 
+		your way!"
+		*line_break
+		(+10 Strength)
+		*comment +10 strenght. They heavy
+		*set strength + 10
+		*page_break
+		*goto powertime
+
+*label powertime
+You open your eyes, back in the orange and purple dimension with Creep E. Mann.
+*line_break
+"Kreekeekeek, now I know all that I need to know about you!" he says. "You shall be the perfect replacement for me!
+You, my dear ${name}, shall take on my legacy and become the new greatest villain this universe has ever known! 
+Isn't that awesome?"
+*choice
+	#It's pretty awesome.
+		"I'm glad that you agree!
+		*goto powertime2
+	#Meh.
+		"Now, now, there's no need to be humble. Humility is for lame heroes, egotism is for villains like us!
+		*goto powertime2
+*label powertime2
+So, without further ado, let's get started. Your mission, should you choose to accept it and you have no choice but to, 
+is to conquer the world! I know, I know, easy task if given enough time. But, there is a catch! You will only have one week 
+to obtain complete and total domination!"
+*choice
+	#One week?!? Impossible!
+		"It will be tough, but I have faith that you can pull it off. And it's not like I will be abandoning you
+		to do this on your own. I'll be here to give you advice and aid throughout your quest."
+		*page_break
+		*goto powertime3
+	#Why the deadline?
+		"Exactly a week from today is the 167th anniversary of the time I conquered Earth, so if we miss this opportunity
+		we'll have to wait a whole year for the next one! It is extremely important to me that we pull this off on my anniversary,
+		so we will!"
+		*page_break
+		*goto powertime3
+	#Just one week? Easy.
+		"Oh ho ho! Pretty confident there, I see! That's the kind of attitude I like to see. And, after what I have for you
+		next, this task will be even easier than you currently expect!"
+		*page_break
+		*goto powertime3
+	#I choose not to accept this mission.
+		"I told you that you don't have a choice, so stop joking around! This is serious!"
+		*page_break
+		*goto powertime3
+
+*label powertime3
+"So, to aid you in this task I shall be giving you a gift! Yes, one of the greatest gifts ever given! For to you, my apprentice,
+my successor, I shall pass on one of my secret skills! As I am sure that you know, I have three superpowers within my arsenal.
+The first: Super Strength! With this ability, I can amplify my physical prowess by 278.3 thousand times! With your already unnatural strength, 
+I'd bet that you could bench press an infinite amount of pounds! The only catch is that you must first consume spinach that has passed its 
+expiration date. Though it may sicken you the first few times you try it, you shall slowly develope an immunity to its toxins over time if
+you choose this ability."
+*page_break
+"The second ability I possess is this: Invisibility! It is... exactly what it sounds like. You turn it on and then suddenly no one can
+see you anymore. Its pretty good for stealth and combat. After all, how can you stop something that you cannot see? It does take getting
+used to though. The power does not affect your clothes, so the more clothes you wear the more visible you are. In order to truly make
+use of the invisibility, you must erase yourself of shame and spend all your time naked. It will take some time to get comfortable streaking,
+but if you choose this ability I'm sure you'll get over it."
+*page_break
+"The third and final power you may choose is hypnosis. By performing the entirety of the chicken dance, you can put all those who witness it 
+into a trance. You can then issue commands to entranced people, who will permanently do or believe whatever you say unless you release them. 
+While it can be difficult to get people to watch you dance, with practice you will get faster and more graceful, making it impossible for
+anyone to resist your sick moves!"
+*page_break
+"So, there are your choices. Super strength, invisibility, or hypnosis. Which will it be?"
+*choice
+	#Super Strength!
+		*set power "Super Strength"
+		*goto end_chapter
+	#Invisibility!
+		*set power "Invisibilty"
+		*goto end_chapter
+	#Hypnosis!
+		*set power "Hypnosis"
+		*goto end_chapter
+
+*label end_chapter
+"Wise choice!" Creep E. Mann says. He puts his hand upon the top of your head, rips off a chunk of hair, spits on the bald spot,
+and punches you in the face! As you fall to the ground, you feel a strange energy swell inside your kidney. You have aquired ${power}!
+*page_break
+"Now, I fear it is time for us to part," he says. "It is time for you to wake up and begin you great quest of villainy. I will contact
+you when you need my help. And, for one last piece of advice: you will need lots of money to conquer the world and maintain control. 
+Make sure to get as much money as possible today, so we can focus on the rest of our mission without worry. And remember-"
+*line_break
+As he says these words, he disappears and you begin floating back up. When you open you eyes and come to, you are lying on the bed in a purple
+and orange spandex suit, complete with a moustache and a cape. You can still feel the power swelling within you, fueling the desire to begin
+your conquest!
+*finish

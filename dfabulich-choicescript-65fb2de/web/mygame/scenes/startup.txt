@@ -1,0 +1,18 @@
+*title Path of the Supervillain
+*author Erik Ridd
+
+*scene_list
+	startup
+	chapter1
+	chapter2
+	chapter3
+
+*create name "Unknown"
+*create power "Unknown"
+*create power_mastery 10
+*create money 0
+*create support 0
+*create morality 10
+*create cunning 10
+*create strength 10
+*create day 0
